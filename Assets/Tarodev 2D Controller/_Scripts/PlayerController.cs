@@ -1,9 +1,9 @@
+
 using System;
 using UnityEngine;
 
 namespace TarodevController
 {
-  
     [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
     public class PlayerController : MonoBehaviour, IPlayerController
     {
@@ -22,6 +22,13 @@ namespace TarodevController
 
         #endregion
 
+        // Flaying Test
+        private bool _isFlyingMode = false;
+        [Header("Flying Settings")]
+        public float flapForce = 5f;
+        public float forwardSpeed = 2f;
+        public float maxVerticalSpeed = 10f;
+
         private float _time;
 
         private void Awake()
@@ -36,10 +43,30 @@ namespace TarodevController
         {
             _time += Time.deltaTime;
             GatherInput();
+
+            // Toggle flying mode with the "P" key
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                _isFlyingMode = !_isFlyingMode;
+
+                if (_isFlyingMode)
+                {
+                    // Reset velocity to avoid abrupt changes
+                    _rb.velocity = Vector2.zero;
+                }
+            }
+
+            // Handle flying input if flying mode is active
+            if (_isFlyingMode && Input.GetKeyDown(KeyCode.Space))
+            {
+                Flap();
+            }
         }
 
         private void GatherInput()
         {
+            if (_isFlyingMode) return; // Ignore normal movement inputs when flying
+
             _frameInput = new FrameInput
             {
                 JumpDown = Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.C),
@@ -62,17 +89,44 @@ namespace TarodevController
 
         private void FixedUpdate()
         {
-            CheckCollisions();
-
-            HandleJump();
-            HandleDirection();
-            HandleGravity();
-            
-            ApplyMovement();
+            if (_isFlyingMode)
+            {
+                HandleFlying();
+            }
+            else
+            {
+                CheckCollisions();
+                HandleJump();
+                HandleDirection();
+                HandleGravity();
+                ApplyMovement();
+            }
         }
 
+        #region Flying
+
+        private void HandleFlying()
+        {
+            // Apply constant forward speed
+            _rb.velocity = new Vector2(forwardSpeed, _rb.velocity.y);
+
+            // Limit vertical speed
+            if (Mathf.Abs(_rb.velocity.y) > maxVerticalSpeed)
+            {
+                _rb.velocity = new Vector2(_rb.velocity.x, Mathf.Sign(_rb.velocity.y) * maxVerticalSpeed);
+            }
+        }
+
+        private void Flap()
+        {
+            _rb.velocity = new Vector2(_rb.velocity.x, 0); // Reset vertical velocity
+            _rb.AddForce(Vector2.up * flapForce, ForceMode2D.Impulse); // Apply upward force
+        }
+
+        #endregion
+
         #region Collisions
-        
+
         private float _frameLeftGrounded = float.MinValue;
         private bool _grounded;
 
@@ -108,7 +162,6 @@ namespace TarodevController
         }
 
         #endregion
-
 
         #region Jumping
 
@@ -204,5 +257,3 @@ namespace TarodevController
         public Vector2 FrameInput { get; }
     }
 }
-
-
