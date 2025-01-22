@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 trackSelection = true
 refreshSearchWindowsInPlayMode = false
 pickerAdvancedUI = false
@@ -74,3 +75,6 @@ helperWidgetCurrentArea = "all"
 disabledIndexers = ""
 minIndexVariations = 2
 findProviderIndexHelper = true
+=======
+{}
+>>>>>>> 223f87841378eda676503d94a8e439a6aaa81b0d
