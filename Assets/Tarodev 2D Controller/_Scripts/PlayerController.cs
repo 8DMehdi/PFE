@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-
-=======
->>>>>>> 223f87841378eda676503d94a8e439a6aaa81b0d
 using System;
 using UnityEngine;
 
