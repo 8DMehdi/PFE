@@ -1368,31 +1368,8 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1544650614272011795, guid: dd9cc77f99f2f934a86b47d6bd180210, type: 3}
       insertIndex: -1
       addedObject: {fileID: 269030508}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1544650614272011804, guid: dd9cc77f99f2f934a86b47d6bd180210, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2049462923}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd9cc77f99f2f934a86b47d6bd180210, type: 3}
---- !u!1 &2049462922 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1544650614272011804, guid: dd9cc77f99f2f934a86b47d6bd180210, type: 3}
-  m_PrefabInstance: {fileID: 2049462921}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2049462923
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2049462922}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7074e48f14090e646821df03931d4be1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  vitesseH: 5
-  forceDeLevitation: 5
-  "gravit\xE9": 10
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
