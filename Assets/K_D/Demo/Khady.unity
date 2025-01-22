@@ -636,7 +636,7 @@ Transform:
   m_GameObject: {fileID: 1071998052}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -13.2, y: 4.08, z: 0}
+  m_LocalPosition: {x: -13.2, y: 3.65, z: 0}
   m_LocalScale: {x: 2, y: 2.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1309,7 +1309,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1950802167}
   - component: {fileID: 1950802169}
-  - component: {fileID: 1950802168}
   - component: {fileID: 1950802170}
   m_Layer: 0
   m_Name: Circle
@@ -1333,18 +1332,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1422498422}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1950802168
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1950802166}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8e77047e8d5dd640a99d24367801500, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &1950802169
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1452,7 +1439,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1544650614272011792, guid: dd9cc77f99f2f934a86b47d6bd180210, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1544650614272011793, guid: dd9cc77f99f2f934a86b47d6bd180210, type: 3}
       propertyPath: m_GravityScale
@@ -1464,11 +1451,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1544650614272011795, guid: dd9cc77f99f2f934a86b47d6bd180210, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -19.31
+      value: -17.88
       objectReference: {fileID: 0}
     - target: {fileID: 1544650614272011795, guid: dd9cc77f99f2f934a86b47d6bd180210, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.19
+      value: -0.4
       objectReference: {fileID: 0}
     - target: {fileID: 1544650614272011795, guid: dd9cc77f99f2f934a86b47d6bd180210, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1531,11 +1518,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2049462922}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03f657228249fda4c97b081f08c2832f, type: 3}
+  m_Script: {fileID: 11500000, guid: 7074e48f14090e646821df03931d4be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   vitesseH: 5
-  forceDeLevitation: 20
+  forceDeLevitation: 5
   "gravit\xE9": 10
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

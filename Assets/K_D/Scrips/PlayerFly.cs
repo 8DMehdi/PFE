@@ -20,7 +20,6 @@ public class PlayerFly : MonoBehaviour
         float moveHorizontal = Input.GetAxis("Horizontal"); 
         rb.velocity = new Vector2(moveHorizontal * vitesseH, rb.velocity.y);
 
-        
         if (Mathf.Abs(moveHorizontal) > 0.1f) 
         {
             rb.velocity = new Vector2(rb.velocity.x, Mathf.Lerp(rb.velocity.y, forceDeLevitation, 0.1f));
