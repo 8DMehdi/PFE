@@ -174,9 +174,37 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Mehdi
       objectReference: {fileID: 0}
+    - target: {fileID: 2969068311871471200, guid: 3aafc44a059428648a7aa0c3066b06b1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2969068311962969768, guid: 3aafc44a059428648a7aa0c3066b06b1, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2969068313154050965, guid: 3aafc44a059428648a7aa0c3066b06b1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2969068313154050965, guid: 3aafc44a059428648a7aa0c3066b06b1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 2969068313154050967, guid: 3aafc44a059428648a7aa0c3066b06b1, type: 3}
+      propertyPath: m_Size.x
+      value: 1.4783835
+      objectReference: {fileID: 0}
+    - target: {fileID: 2969068313154050967, guid: 3aafc44a059428648a7aa0c3066b06b1, type: 3}
+      propertyPath: m_Size.y
+      value: 1.7873256
+      objectReference: {fileID: 0}
+    - target: {fileID: 2969068313154050967, guid: 3aafc44a059428648a7aa0c3066b06b1, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 53028cdc4ef1f374d8e5020fa2652236, type: 3}
+    - target: {fileID: 2969068313154050967, guid: 3aafc44a059428648a7aa0c3066b06b1, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
