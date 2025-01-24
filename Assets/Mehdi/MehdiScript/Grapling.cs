@@ -49,8 +49,8 @@ public class Grapling : MonoBehaviour
         Debug.Log("Is touching trigger: " + isTouchingTriggerZone);
 
 
-        //if (Input.GetKeyDown(KeyCode.Mouse0) && isTouchingTriggerZone)
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0) && isTouchingTriggerZone)
+        //if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             _stats.MaxFallSpeed = -0;
             _stats.MaxSpeed = 33;
