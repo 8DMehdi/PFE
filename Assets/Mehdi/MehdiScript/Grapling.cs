@@ -7,7 +7,8 @@ public class Grapling : MonoBehaviour
 {
     public Camera mainCamera;
     public LineRenderer _lineRenderer;
-    public DistanceJoint2D _distanceJoint;
+    // public DistanceJoint2D _distanceJoint;
+    [SerializeField] private DistanceJoint2D _distanceJoint;
 
     public bool isTouchingTriggerZone = false;
 
@@ -66,7 +67,6 @@ public class Grapling : MonoBehaviour
             _distanceJoint.enabled = false;
             _lineRenderer.enabled = false;
             //_stats.MaxSpeed = 14;
-            
             StartCoroutine(ChangeIntAfterDelay());
         }
         if (_distanceJoint.enabled)

@@ -21,12 +21,12 @@ namespace TarodevController
 
         #endregion
 
-        // Flaying Test
+        // Flying Mode
         private bool _isFlyingMode = false;
         [Header("Flying Settings")]
         public float flapForce = 5f;
         public float forwardSpeed = 2f;
-        public float maxVerticalSpeed = 10f;
+        public float maxVerticalSpeed = 5f;
 
         private float _time;
 
@@ -56,9 +56,9 @@ namespace TarodevController
             }
 
             // Handle flying input if flying mode is active
-            if (_isFlyingMode && Input.GetKeyDown(KeyCode.Space))
+            if (_isFlyingMode && Input.GetKey(KeyCode.Space))
             {
-                Flap();
+                HandleFlying();
             }
         }
 
@@ -90,36 +90,34 @@ namespace TarodevController
         {
             if (_isFlyingMode)
             {
-                HandleFlying();
+                // No regular FixedUpdate logic when in flying mode
+                return;
             }
-            else
-            {
-                CheckCollisions();
-                HandleJump();
-                HandleDirection();
-                HandleGravity();
-                ApplyMovement();
-            }
+
+            CheckCollisions();
+            HandleJump();
+            HandleDirection();
+            HandleGravity();
+            ApplyMovement();
         }
 
         #region Flying
 
         private void HandleFlying()
         {
-            // Apply constant forward speed
-            _rb.velocity = new Vector2(forwardSpeed, _rb.velocity.y);
+            // Apply constant forward speed and allow vertical movement
+            Vector2 flyingVelocity = new Vector2(forwardSpeed, _rb.velocity.y);
+
+            // Apply upward thrust when holding Space
+            if (Input.GetKey(KeyCode.Space))
+            {
+                flyingVelocity.y += flapForce * Time.fixedDeltaTime;
+            }
 
             // Limit vertical speed
-            if (Mathf.Abs(_rb.velocity.y) > maxVerticalSpeed)
-            {
-                _rb.velocity = new Vector2(_rb.velocity.x, Mathf.Sign(_rb.velocity.y) * maxVerticalSpeed);
-            }
-        }
+            flyingVelocity.y = Mathf.Clamp(flyingVelocity.y, -maxVerticalSpeed, maxVerticalSpeed);
 
-        private void Flap()
-        {
-            _rb.velocity = new Vector2(_rb.velocity.x, 0); // Reset vertical velocity
-            _rb.AddForce(Vector2.up * flapForce, ForceMode2D.Impulse); // Apply upward force
+            _rb.velocity = flyingVelocity;
         }
 
         #endregion
