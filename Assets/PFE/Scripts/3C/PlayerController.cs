@@ -297,20 +297,33 @@ public class PlayerController : MonoBehaviour
 
     private void HandleFlying()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal"); // Updated line to use Unity's Input system
+        float moveHorizontal = Input.GetAxis("Horizontal");
 
+        // Appliquer une vitesse horizontale constante
         body.velocity = new Vector2(moveHorizontal * flySpeed, body.velocity.y);
 
+        // Limiter la vitesse verticale
+        if (Mathf.Abs(body.velocity.y) > Stats.MaxVerticalSpeed)
+        {
+            body.velocity = new Vector2(body.velocity.x, Mathf.Sign(body.velocity.y) * Stats.MaxVerticalSpeed);
+        }
+
+        // Appliquer une force de lévitation douce
         if (Mathf.Abs(moveHorizontal) > 0.1f)
         {
             body.velocity = new Vector2(body.velocity.x, Mathf.Lerp(body.velocity.y, levitationForce, 0.1f));
         }
         else
         {
-            body.velocity = new Vector2(body.velocity.x, Mathf.Lerp(body.velocity.y, 0f, 0.1f));
+            // Appliquer une descente douce lorsque les touches ne sont pas enfoncées
+            body.velocity = new Vector2(body.velocity.x, Mathf.Lerp(body.velocity.y, -levitationForce, 0.1f));
         }
 
-        body.AddForce(Vector2.down * gravity); // Appliquer la gravité manuellement
+        // Appliquer la gravité manuellement
+        body.AddForce(Vector2.down * gravity * Time.deltaTime); // Ajustez la gravité ici si nécessaire
+
+        // Ajouter un léger mouvement latéral lors de la descente
+        body.velocity += new Vector2(moveHorizontal * 10f, 0); // Glisse latérale
     }
 
     public void EnableFly()
