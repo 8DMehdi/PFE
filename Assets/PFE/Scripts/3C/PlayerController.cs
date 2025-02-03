@@ -129,7 +129,7 @@ public class PlayerController : MonoBehaviour
         switch (newState)
         {
             case PlayerState.Moving:
-                body.gravityScale = 1;
+                body.gravityScale = 3;
                 break;
             case PlayerState.Jumping:
                 break;
