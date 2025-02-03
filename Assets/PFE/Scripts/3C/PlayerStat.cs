@@ -18,4 +18,9 @@ public class PlayerStat : ScriptableObject
 
     [Layer] public int grabLayer;
     public float grabDistance = 30;
+    
+
+    // Ajustez la valeur par défaut selon vos besoins
+     [SerializeField] private float maxVerticalSpeed = 10f; 
+    public float MaxVerticalSpeed => maxVerticalSpeed;
 }
