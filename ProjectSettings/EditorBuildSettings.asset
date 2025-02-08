@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/PFE/Sandbox/Mehdi/MehdiScene.unity
     guid: 5b1d6982ecc66ce4f80687e5a9b32f7a
+  - enabled: 1
+    path: Assets/Mehdi/MehdiScene/GameMehdi.unity
+    guid: c10dfc83d0bfa9144a8c9bb2de30814b
   m_configObjects: {}
