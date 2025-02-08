@@ -94,7 +94,11 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
+<<<<<<< HEAD
     buildTarget: iPhone
+=======
+    buildTarget: DefaultTexturePlatform
+>>>>>>> b7c6dda30d7cccb725b6b675c0b0277528a1d774
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -119,6 +123,7 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+<<<<<<< HEAD
   - serializedVersion: 3
     buildTarget: Windows Store Apps
     maxTextureSize: 2048
@@ -145,6 +150,8 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+=======
+>>>>>>> b7c6dda30d7cccb725b6b675c0b0277528a1d774
   spriteSheet:
     serializedVersion: 2
     sprites: []
