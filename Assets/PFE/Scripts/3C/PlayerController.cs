@@ -331,7 +331,7 @@ private void HandleFlying()
         body.velocity += new Vector2(moveHorizontal * 10f, 0);
     }
 
-    SoundManager.Instance.PlayFlySound();
+    // SoundManager.Instance.PlayFlySound();
 }
 
 
