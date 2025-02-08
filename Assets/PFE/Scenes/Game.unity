@@ -5116,6 +5116,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7228474292424069773, guid: ae1a1282f1cffc34a8e51725db132e76, type: 3}
+      propertyPath: gravity
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7228474292424069773, guid: ae1a1282f1cffc34a8e51725db132e76, type: 3}
+      propertyPath: flySpeed
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7228474292424069773, guid: ae1a1282f1cffc34a8e51725db132e76, type: 3}
+      propertyPath: levitationForce
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 7499258897512713485, guid: ae1a1282f1cffc34a8e51725db132e76, type: 3}
       propertyPath: m_Name
       value: Avatar
