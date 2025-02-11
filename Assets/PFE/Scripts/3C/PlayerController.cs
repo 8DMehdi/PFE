@@ -71,25 +71,22 @@ public class PlayerController : MonoBehaviour
     private Vector2 HookPoint;
     public LineRenderer lineRenderer;
     public SpringJoint2D distanceJoint;
-
-    [SerializeField] private float flySpeed = 5f; // Vitesse de vol
-    [SerializeField] private float levitationForce = 5f; // Force de lévitation
-    [SerializeField] private float gravity = 5f; // Gravité appliquée pendant le vol
     private bool _canFly = false; // Capacité de voler activée/désactivée
-
+    private PlayerFlight playerFlight;
     private void Awake()
-    {
-        cam = Camera.main;
-        body = GetComponent<Rigidbody2D>();
-        col = GetComponent<CapsuleCollider2D>();
+{
+    cam = Camera.main;
+    body = GetComponent<Rigidbody2D>();
+    col = GetComponent<CapsuleCollider2D>();
+    playerFlight = GetComponent<PlayerFlight>(); 
 
-        PlayerInput.OnMove += Move;
-        PlayerInput.OnInteract += Interact;
-        PlayerInput.OnJumpPressed += OnJumpPressed;
-        PlayerInput.OnJumpReleased += OnJumpReleased;
-        PlayerInput.OnGrabMaintain += StartGrab;
-        PlayerInput.OnGrabRelease += StopGrab;
-    }
+    PlayerInput.OnMove += Move;
+    PlayerInput.OnInteract += Interact;
+    PlayerInput.OnJumpPressed += OnJumpPressed;
+    PlayerInput.OnJumpReleased += OnJumpReleased;
+    PlayerInput.OnGrabMaintain += StartGrab;
+    PlayerInput.OnGrabRelease += StopGrab;
+}
 
     private void Start()
     {
@@ -101,22 +98,20 @@ public class PlayerController : MonoBehaviour
     {
         lineRenderer.SetPosition(1, transform.position);
         
-        if (_canFly)
-        {
-            HandleFlying(); 
-        }
-
-        if (Input.GetKeyDown(KeyCode.P))
+       if (Input.GetKeyDown(KeyCode.P))
+    {
+        if (playerFlight != null)
         {
             if (_canFly)
             {
-                DisableFly(); 
+                playerFlight.DisableFly();
             }
             else
             {
-                EnableFly(); 
+                playerFlight.EnableFly();
             }
         }
+    }
     }
 
     private void FixedUpdate()
@@ -294,55 +289,4 @@ public class PlayerController : MonoBehaviour
         State = PlayerState.Falling;
     }
 
-private void HandleFlying()
-{
-    float moveHorizontal = Input.GetAxis("Horizontal");
-
-    // Appliquer une vitesse horizontale seulement si une touche est pressée
-    if (Mathf.Abs(moveHorizontal) > 0.1f)
-    {
-        body.velocity = new Vector2(moveHorizontal * flySpeed, body.velocity.y);
-    }
-
-    // Limiter la vitesse verticale
-    if (Mathf.Abs(body.velocity.y) > Stats.MaxVerticalSpeed)
-    {
-        body.velocity = new Vector2(body.velocity.x, Mathf.Sign(body.velocity.y) * Stats.MaxVerticalSpeed);
-    }
-
-    // Appliquer une force de lévitation douce
-    if (Mathf.Abs(moveHorizontal) > 0.5f)
-    {
-        body.velocity = new Vector2(body.velocity.x, Mathf.Lerp(body.velocity.y, levitationForce, 0.5f));
-    }
-    else
-    {
-        // Appliquer une descente en douceur lorsqu'aucune touche n'est pressée
-        body.velocity = new Vector2(body.velocity.x, Mathf.Lerp(body.velocity.y, -levitationForce, 0.5f));
-    }
-
-    // Appliquer la gravité manuellement
-    body.AddForce(Vector2.down * gravity * Time.deltaTime); // Ajustez la gravité ici si nécessaire
-
-    // Ajouter un léger mouvement latéral lors de la descente uniquement si une touche est enfoncée
-    if (Mathf.Abs(moveHorizontal) > 0.1f)
-    {
-        body.velocity += new Vector2(moveHorizontal * 10f, 0);
-    }
-
-    // SoundManager.Instance.PlayFlySound();
-}
-
-
-    public void EnableFly()
-    {
-        _canFly = true; // Activer la capacité de voler
-        Debug.Log("Flying ability enabled!");
-    }
-
-    public void DisableFly()
-    {
-        _canFly = false; // Désactiver la capacité de voler
-        Debug.Log("Flying ability disabled!");
-    }
 }
