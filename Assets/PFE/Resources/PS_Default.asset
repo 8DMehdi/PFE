@@ -13,15 +13,9 @@ MonoBehaviour:
   m_Name: PS_Default
   m_EditorClassIdentifier: 
   brakeSpeed: 0.5
-<<<<<<< HEAD
-  speed: 35
-  airSpeed: 28
-  grabSpeed: 40
-=======
   speed: 100
   airSpeed: 100
   grabSpeed: 20
->>>>>>> b55a2cab2f76e841ffb64187bbfd57508573c1f5
   maxSpeedGrab: 25
   maxSpeedVertical: 25
   maxSpeedHorizontal: 9

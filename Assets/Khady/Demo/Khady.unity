@@ -6352,6 +6352,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7228474292424069773, guid: ae1a1282f1cffc34a8e51725db132e76, type: 3}
+      propertyPath: Stats
+      value: 
+      objectReference: {fileID: 11400000, guid: 1d9ae521ec7ea2242bcc38bf7e148e24, type: 2}
+    - target: {fileID: 7228474292424069773, guid: ae1a1282f1cffc34a8e51725db132e76, type: 3}
       propertyPath: gravity
       value: 5
       objectReference: {fileID: 0}
