@@ -67,6 +67,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField, ReadOnly] private PlayerState _state = PlayerState.Moving;
 
     [SerializeField, Expandable] public PlayerStat Stats;
+    [SerializeField, ReadOnly] private bool _canDoubleJump = false;
 
     private Vector2 HookPoint;
     public LineRenderer lineRenderer;
@@ -231,6 +232,26 @@ public class PlayerController : MonoBehaviour
         if (IsTouchingGround) Jump(Stats.jumpForce);
         else if (State == PlayerState.Grabbing) Jump(Stats.jumpForce * .5f);
 
+
+        // DoubleJump
+
+        if (State == PlayerState.Interacting) return;
+
+    if (IsTouchingGround)
+    {
+        Jump(Stats.jumpForce);
+        _canDoubleJump = true; // Permet le double saut après un saut normal
+    }
+    else if (State == PlayerState.Grabbing)
+    {
+        Jump(Stats.jumpForce * .5f);
+    }
+    else if (_canDoubleJump) // Si on est en l'air et qu'on peut encore sauter une seconde fois
+    {
+        Jump(Stats.jumpForce * 0.8f); // Le double saut peut être un peu plus faible
+        _canDoubleJump = false; // Désactive le double saut après usage
+    }
+
     }
     private void Jump(float force)
     {
@@ -245,15 +266,17 @@ public class PlayerController : MonoBehaviour
     }
     private void OnFloorContactChange(bool isTouchingGround)
     {
-        if (isTouchingGround)
-        {
-            //Atterrissage
-            State = PlayerState.Moving;
-        }
-        else
-        {
-            if (State != PlayerState.Jumping) State = PlayerState.Falling;
-        }
+if (isTouchingGround)
+    {
+        State = PlayerState.Moving;
+        _canDoubleJump = false; // Réinitialise la possibilité de double saut
+    }
+    else
+    {
+        if (State != PlayerState.Jumping) State = PlayerState.Falling;
+    }
+
+        
     }
     private void OnVelocityYChange(bool isFalling)
     {
