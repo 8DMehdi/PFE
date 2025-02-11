@@ -103,19 +103,18 @@ public class PlayerController : MonoBehaviour
         
         if (_canFly)
         {
-            HandleFlying(); // Gérer le vol si activé
+            HandleFlying(); 
         }
 
-        // Vérifier si la touche "P" est enfoncée pour activer ou désactiver le vol
         if (Input.GetKeyDown(KeyCode.P))
         {
             if (_canFly)
             {
-                DisableFly(); // Désactiver la capacité de voler
+                DisableFly(); 
             }
             else
             {
-                EnableFly(); // Activer la capacité de voler
+                EnableFly(); 
             }
         }
     }
