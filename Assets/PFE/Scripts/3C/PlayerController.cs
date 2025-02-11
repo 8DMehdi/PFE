@@ -418,24 +418,31 @@ public class PlayerController : MonoBehaviour
     [SerializeField, ReadOnly] private PlayerState _state = PlayerState.Moving;
 
     [SerializeField, Expandable] public PlayerStat Stats;
+    [SerializeField, ReadOnly] private bool _canDoubleJump = false;
 
     private Vector2 HookPoint;
     public LineRenderer lineRenderer;
     public SpringJoint2D distanceJoint;
+<<<<<<< HEAD
 
+=======
+    private bool _canFly = false; // Capacité de voler activée/désactivée
+    private PlayerFlight playerFlight;
+>>>>>>> 635bea2deb35ab9d6fc80677022fd577b14f09c0
     private void Awake()
-    {
-        cam = Camera.main;
-        body = GetComponent<Rigidbody2D>();
-        col = GetComponent<CapsuleCollider2D>();
+{
+    cam = Camera.main;
+    body = GetComponent<Rigidbody2D>();
+    col = GetComponent<CapsuleCollider2D>();
+    playerFlight = GetComponent<PlayerFlight>(); 
 
-        PlayerInput.OnMove += Move;
-        PlayerInput.OnInteract += Interact;
-        PlayerInput.OnJumpPressed += OnJumpPressed;
-        PlayerInput.OnJumpReleased += OnJumpReleased;
-        PlayerInput.OnGrabMaintain += StartGrab;
-        PlayerInput.OnGrabRelease += StopGrab;
-    }
+    PlayerInput.OnMove += Move;
+    PlayerInput.OnInteract += Interact;
+    PlayerInput.OnJumpPressed += OnJumpPressed;
+    PlayerInput.OnJumpReleased += OnJumpReleased;
+    PlayerInput.OnGrabMaintain += StartGrab;
+    PlayerInput.OnGrabRelease += StopGrab;
+}
 
     private void Start()
     {
@@ -446,7 +453,27 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         lineRenderer.SetPosition(1, transform.position);
+<<<<<<< HEAD
     }
+=======
+        
+       if (Input.GetKeyDown(KeyCode.P))
+    {
+        if (playerFlight != null)
+        {
+            if (_canFly)
+            {
+                playerFlight.DisableFly();
+            }
+            else
+            {
+                playerFlight.EnableFly();
+            }
+        }
+    }
+    }
+
+>>>>>>> 635bea2deb35ab9d6fc80677022fd577b14f09c0
     private void FixedUpdate()
     {
         if (State == PlayerState.Interacting) return;
@@ -564,6 +591,26 @@ public class PlayerController : MonoBehaviour
         if (IsTouchingGround) Jump(Stats.jumpForce);
         else if (State == PlayerState.Grabbing) Jump(Stats.jumpForce * .5f);
 
+
+        // DoubleJump
+
+        if (State == PlayerState.Interacting) return;
+
+    if (IsTouchingGround)
+    {
+        Jump(Stats.jumpForce);
+        _canDoubleJump = true; // Permet le double saut après un saut normal
+    }
+    else if (State == PlayerState.Grabbing)
+    {
+        Jump(Stats.jumpForce * .5f);
+    }
+    else if (_canDoubleJump) // Si on est en l'air et qu'on peut encore sauter une seconde fois
+    {
+        Jump(Stats.jumpForce * 0.8f); // Le double saut peut être un peu plus faible
+        _canDoubleJump = false; // Désactive le double saut après usage
+    }
+
     }
     private void Jump(float force)
     {
@@ -578,15 +625,17 @@ public class PlayerController : MonoBehaviour
     }
     private void OnFloorContactChange(bool isTouchingGround)
     {
-        if (isTouchingGround)
-        {
-            //Atterrissage
-            State = PlayerState.Moving;
-        }
-        else
-        {
-            if (State != PlayerState.Jumping) State = PlayerState.Falling;
-        }
+if (isTouchingGround)
+    {
+        State = PlayerState.Moving;
+        _canDoubleJump = false; // Réinitialise la possibilité de double saut
+    }
+    else
+    {
+        if (State != PlayerState.Jumping) State = PlayerState.Falling;
+    }
+
+        
     }
     private void OnVelocityYChange(bool isFalling)
     {
@@ -621,4 +670,8 @@ public class PlayerController : MonoBehaviour
 
         State = PlayerState.Falling;
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 635bea2deb35ab9d6fc80677022fd577b14f09c0
 }
