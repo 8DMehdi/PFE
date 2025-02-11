@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: PS_TEST
   m_EditorClassIdentifier: 
   brakeSpeed: 0.5
-  speed: 100
-  airSpeed: 100
-  grabSpeed: 20
+  speed: 25
+  airSpeed: 32
+  grabSpeed: 30
   maxSpeedGrab: 25
-  maxSpeedVertical: 25
-  maxSpeedHorizontal: 9
-  jumpForce: 20
-  fallGravityScale: 5
+  maxSpeedVertical: 38
+  maxSpeedHorizontal: 15
+  jumpForce: 19
+  fallGravityScale: 8
   grabLayer: 6
-  grabDistance: 33
-  maxVerticalSpeed: 12
+  grabDistance: 25
+  maxVerticalSpeed: 13
