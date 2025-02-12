@@ -9,6 +9,7 @@ public class AnimationController : MonoBehaviour
     private string currentAnimaton;
     const string PLAYER_IDLE = "idle";
     const string PLAYER_RUN = "RUN";
+    const string PLAYER_JUMP = "jump";
     private Vector3 lastPosition; // Store the last frame position
     public float movementThreshold = 1f; // Adjust this value to reduce jitter
 
@@ -40,6 +41,12 @@ public class AnimationController : MonoBehaviour
         {
             ChangeAnimationState(PLAYER_IDLE);
         }
+
+        if (Input.GetKey(KeyCode.Space))
+        {
+            ChangeAnimationState(PLAYER_JUMP);
+        }
+
 
         // Update last position for the next frame
         lastPosition = transform.position;
