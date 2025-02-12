@@ -57,6 +57,8 @@ public class PlayerFlight : MonoBehaviour
         }
 
         body.AddForce(Vector2.down * gravity * Time.deltaTime);
+
+        SoundManager.Instance.PlayFlySound();
     }
 
     public void EnableFly()
@@ -69,6 +71,7 @@ public class PlayerFlight : MonoBehaviour
     {
         _canFly = false;
         Debug.Log("Flying ability disabled!");
+        // SoundManager.Instance.PlayLandSound();
     }
 
     private void ToggleFlight()

@@ -619,7 +619,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 301, y: 100}
+  m_AnchoredPosition: {x: 298, y: 97}
   m_SizeDelta: {x: 600, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &152406439
@@ -1083,8 +1083,8 @@ MonoBehaviour:
   jumpSound: {fileID: 0}
   collectSound: {fileID: 8300000, guid: d1278da8ce06ffd42975bf93c1225d18, type: 3}
   respawnSound: {fileID: 0}
-  flySound: {fileID: 0}
-  landSound: {fileID: 0}
+  flySound: {fileID: 8300000, guid: d1278da8ce06ffd42975bf93c1225d18, type: 3}
+  landSound: {fileID: 8300000, guid: d1278da8ce06ffd42975bf93c1225d18, type: 3}
   deathSound: {fileID: 8300000, guid: d1278da8ce06ffd42975bf93c1225d18, type: 3}
   musicVolume: 1
   effectsVolume: 1
@@ -4403,7 +4403,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1243834703}
-  - {fileID: 1859951111}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1433932449
@@ -4550,7 +4549,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -8.4, y: -6.6, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.0333, y: 1.51438, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -5659,12 +5658,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1859951110}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 19.4, y: 0.9, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1422548726}
+  m_Father: {fileID: 1962819534}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1859951112
 MonoBehaviour:
@@ -6370,7 +6369,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 3502441213320571029, guid: ae1a1282f1cffc34a8e51725db132e76, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1859951111}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 7499258897512713485, guid: ae1a1282f1cffc34a8e51725db132e76, type: 3}
       insertIndex: -1
@@ -6381,6 +6383,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7499258897512713485, guid: ae1a1282f1cffc34a8e51725db132e76, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1962819543}
+    - targetCorrespondingSourceObject: {fileID: 7499258897512713485, guid: ae1a1282f1cffc34a8e51725db132e76, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1962819550}
   m_SourcePrefab: {fileID: 100100000, guid: ae1a1282f1cffc34a8e51725db132e76, type: 3}
 --- !u!1 &1962819533 stripped
 GameObject:
@@ -6429,6 +6434,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionRange: 2
+--- !u!114 &1962819550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1962819533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 120818569a144eb458c2f6f95158f271, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flySpeed: 5
+  levitationForce: 5
+  gravity: 5
+  maxVerticalSpeed: 10
 --- !u!1 &2087030569
 GameObject:
   m_ObjectHideFlags: 0
