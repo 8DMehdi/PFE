@@ -428,7 +428,7 @@ public class PlayerController : MonoBehaviour
     cam = Camera.main;
     body = GetComponent<Rigidbody2D>();
     col = GetComponent<CapsuleCollider2D>();
-    playerFlight = GetComponent<PlayerFlight>(); 
+    PlayerFlight = GetComponent<PlayerFlight>(); 
 
     PlayerInput.OnMove += Move;
     PlayerInput.OnInteract += Interact;
