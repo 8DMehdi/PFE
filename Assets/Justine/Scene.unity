@@ -3763,15 +3763,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57db54fe794d7024f8599d2fa9aa8088, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicClip: {fileID: 0}
-  jumpSound: {fileID: 0}
-  collectSound: {fileID: 8300000, guid: d1278da8ce06ffd42975bf93c1225d18, type: 3}
-  respawnSound: {fileID: 0}
-  flySound: {fileID: 0}
+  musicClip: {fileID: 8300000, guid: 78dfbc65b0da9c64ca064ebf5bddacc5, type: 3}
+  jumpSound: {fileID: 8300000, guid: 37dc7e53423b5c4459b679e611bb9bec, type: 3}
+  collectSound: {fileID: 8300000, guid: b7cd0139cd0e7664cae9b4eacc17883c, type: 3}
+  respawnSound: {fileID: 8300000, guid: cd8f231778a234138849b780b1e91d98, type: 3}
+  flySound: {fileID: 8300000, guid: 03f9e98724b9fff4da1564fda43435eb, type: 3}
   landSound: {fileID: 0}
-  deathSound: {fileID: 8300000, guid: d1278da8ce06ffd42975bf93c1225d18, type: 3}
-  musicVolume: 1
-  effectsVolume: 1
+  deathSound: {fileID: 8300000, guid: da1b160ba7e6b4bf0a40defe83b864d4, type: 3}
+  musicVolume: 0.3
+  effectsVolume: 0.5
 --- !u!4 &203922703
 Transform:
   m_ObjectHideFlags: 0
@@ -29789,7 +29789,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7228474292424069773, guid: ae1a1282f1cffc34a8e51725db132e76, type: 3}
       propertyPath: flySpeed
-      value: 8
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7228474292424069773, guid: ae1a1282f1cffc34a8e51725db132e76, type: 3}
       propertyPath: levitationForce

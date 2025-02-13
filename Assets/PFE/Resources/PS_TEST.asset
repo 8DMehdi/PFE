@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brakeSpeed: 0.5
   speed: 25
-  airSpeed: 32
+  airSpeed: 23
   grabSpeed: 30
   maxSpeedGrab: 25
-  maxSpeedVertical: 38
+  maxSpeedVertical: 20
   maxSpeedHorizontal: 15
   jumpForce: 19
   fallGravityScale: 8

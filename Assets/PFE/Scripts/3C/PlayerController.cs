@@ -238,6 +238,25 @@ public class PlayerController : MonoBehaviour
         //Check if the player is grounded
         if (IsTouchingGround) Jump(Stats.jumpForce);
         else if (State == PlayerState.Grabbing) Jump(Stats.jumpForce * .5f);
+        // DoubleJump
+        
+        if (State == PlayerState.Interacting) return;
+    if (IsTouchingGround)
+    {
+        Jump(Stats.jumpForce);
+        _canDoubleJump = true; 
+    }
+    
+        else if (State == PlayerState.Grabbing)
+        {
+            Jump(Stats.jumpForce * .5f);
+        }
+        else if (_canDoubleJump)
+        {
+            Jump(Stats.jumpForce * 0.8f);
+            _canDoubleJump = false;
+        }
+    
 
     }
     private void Jump(float force)
@@ -257,6 +276,7 @@ public class PlayerController : MonoBehaviour
         {
             //Atterrissage
             State = PlayerState.Moving;
+            _canDoubleJump = false;
         }
         else
         {
