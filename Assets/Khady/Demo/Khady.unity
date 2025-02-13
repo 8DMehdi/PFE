@@ -595,7 +595,7 @@ GameObject:
   - component: {fileID: 152406440}
   - component: {fileID: 152406439}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: DialoguePanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1135,10 +1135,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 152406438}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 12, y: -2}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 303, y: -116}
+  m_SizeDelta: {x: 590, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &268429027
 MonoBehaviour:
@@ -1164,7 +1164,7 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: e3265ab4bf004d28a9537516768c1c75, type: 3}
     m_FontSize: 16
     m_FontStyle: 1
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 0
@@ -1391,21 +1391,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bf33f5319ef9434c8434dce7d67f5f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue:
-    npcName: NPC0
-    npcSentences:
-    - dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-      industry's standard dummy text ever since the 1500s, when an unknown printer
-      took a galley of type and scrambled it to make a type specimen book. It has
-      survived not only five centuries, but also the leap into electronic typesetting,
-      remaining essentially unchanged. It was popularised in the 1960s with the release
-      of Letraset sheets containing Lorem Ipsum passages, and more recently with
-      desktop publishing software like Aldus PageMaker including versions of Lorem
-      Ipsum
-    - lorem khady tatat
-    playerSentences:
-    - what's up
-    - 'le royauma est il en bon '
+  dialogue: {fileID: 11400000, guid: aa65cf7dbf2ec27439f8961bddb0c73c, type: 2}
 --- !u!61 &452958755
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1511,7 +1497,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 452958753}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -7.73, y: -6.6, z: 0}
   m_LocalScale: {x: 1, y: 1.1667, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4445,12 +4431,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bf33f5319ef9434c8434dce7d67f5f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue:
-    npcName: NPC1
-    npcSentences:
-    - Hola
-    playerSentences:
-    - "coma t\xE9 esta"
+  dialogue: {fileID: 11400000, guid: aa65cf7dbf2ec27439f8961bddb0c73c, type: 2}
 --- !u!61 &1433932451
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5838,14 +5819,14 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: e3265ab4bf004d28a9537516768c1c75, type: 3}
     m_FontSize: 16
     m_FontStyle: 1
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 
 --- !u!222 &1876764912
@@ -6363,7 +6344,7 @@ PrefabInstance:
     - target: {fileID: 7228474292424069773, guid: ae1a1282f1cffc34a8e51725db132e76, type: 3}
       propertyPath: Stats
       value: 
-      objectReference: {fileID: 11400000, guid: 1d9ae521ec7ea2242bcc38bf7e148e24, type: 2}
+      objectReference: {fileID: 11400000, guid: 26efe059b355d9744b65fcbe0be56a2a, type: 2}
     - target: {fileID: 7228474292424069773, guid: ae1a1282f1cffc34a8e51725db132e76, type: 3}
       propertyPath: gravity
       value: 5

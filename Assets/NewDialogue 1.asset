@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de3acb35f740cf94bb5150d36e42035d, type: 3}
   m_Name: NewDialogue 1
   m_EditorClassIdentifier: 
-  npcName: 
+  npcName: Queen
   npcSentences:
   - It is a long established fact that a reader will be distracted by the readable
     content of a page when looking at its layout.
   playerSentences:
-  - It is a long established fact that a reader will be distracted by the readable
-    content of a page when looking at its layout.
+  - 'CC c''est  moi je te parle reponds moi '

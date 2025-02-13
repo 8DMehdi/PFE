@@ -32,34 +32,6 @@ public class DialogueManager : MonoBehaviour
         dialoguePanel.SetActive(false);
     }
 
-    // public void StartDialogue(Dialogue dialogue)
-    // {
-    //     if (dialogue == null || dialogue.npcSentences.Count == 0)
-    //     {
-    //         Debug.LogError("Le dialogue est vide ou non assigné !");
-    //         return;
-    //     }
-
-    //     npcSentences.Clear();
-    //     playerSentences.Clear();
-
-    //     nameText.text = dialogue.npcName;
-
-    //     foreach (string sentence in dialogue.npcSentences)
-    //     {
-    //         npcSentences.Enqueue(sentence);
-    //     }
-
-    //     foreach (string sentence in dialogue.playerSentences)
-    //     {
-    //         playerSentences.Enqueue(sentence);
-    //     }
-
-    //     dialoguePanel.SetActive(true);
-    //     isPlayerTurn = false;
-    //     DisplayNextSentence();
-    // }
-
 public void StartDialogue(DialogueData dialogue)
 {
     if (dialogue == null || dialogue.npcSentences.Count == 0)
@@ -113,39 +85,6 @@ public void DisplayNextSentence()
     }
 }
 
-
-    // public void DisplayNextSentence()
-    // {
-    //     if (!isPlayerTurn && npcSentences.Count > 0)
-    //     {
-    //         string sentence = npcSentences.Dequeue();
-    //         StopAllCoroutines();
-    //         StartCoroutine(TypeSentence(sentence));
-    //         isPlayerTurn = true;
-    //     }
-    //     else if (isPlayerTurn && playerSentences.Count > 0)
-    //     {
-    //         string sentence = playerSentences.Dequeue();
-    //         StopAllCoroutines();
-    //         StartCoroutine(TypeSentence(sentence));
-    //         isPlayerTurn = false;
-    //     }
-    //     else
-    //     {
-    //         EndDialogue();
-    //     }
-    // }
-
-    // IEnumerator TypeSentence(string sentence)
-    // {
-    //     dialogueText.text = "";
-    //     foreach (char letter in sentence.ToCharArray())
-    //     {
-    //         dialogueText.text += letter;
-    //         yield return new WaitForSeconds(typingSpeed);
-    //     }
-    // }
-
 private bool isTyping = false;
 
 IEnumerator TypeSentence(string sentence)
@@ -172,7 +111,7 @@ void Update()
     {
         if (isTyping)
         {
-            isTyping = false; // Arrête l'animation et affiche tout d'un coup
+            isTyping = false; 
         }
         else
         {
