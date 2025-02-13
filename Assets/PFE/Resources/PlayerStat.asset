@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6493c69605545294b8c24b1be6f5526c, type: 3}
+  m_Name: PlayerStat
+  m_EditorClassIdentifier: 
+  brakeSpeed: 0.5
+  speed: 8
+  airSpeed: 8
+  grabSpeed: 8
+  maxSpeedGrab: 8
+  maxSpeedVertical: 8
+  maxSpeedHorizontal: 8
+  jumpForce: 8
+  fallGravityScale: 2
+  grabLayer: 0
+  grabDistance: 30
+  maxVerticalSpeed: 10
