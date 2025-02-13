@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brakeSpeed: 0.5
 <<<<<<< HEAD
+<<<<<<< HEAD
   speed: 16
   airSpeed: 4
   grabSpeed: 12
@@ -29,12 +30,22 @@ MonoBehaviour:
   speed: 100
   airSpeed: 100
   grabSpeed: 20
+=======
+  speed: 25
+  airSpeed: 23
+  grabSpeed: 30
+>>>>>>> cb48a3af12e96c94770671bf226638390c58725f
   maxSpeedGrab: 25
-  maxSpeedVertical: 25
-  maxSpeedHorizontal: 9
-  jumpForce: 20
-  fallGravityScale: 5
+  maxSpeedVertical: 20
+  maxSpeedHorizontal: 15
+  jumpForce: 19
+  fallGravityScale: 8
   grabLayer: 6
+<<<<<<< HEAD
   grabDistance: 33
   maxVerticalSpeed: 12
 >>>>>>> a027d51c788c22a68aff5b9571509b73ba3820ef
+=======
+  grabDistance: 25
+  maxVerticalSpeed: 13
+>>>>>>> cb48a3af12e96c94770671bf226638390c58725f
