@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
-    public Dialogue dialogue;
+    public DialogueData dialogue;
 }

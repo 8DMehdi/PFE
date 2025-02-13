@@ -19,7 +19,8 @@ MonoBehaviour:
   maxSpeedGrab: 24
   maxSpeedVertical: 24
   maxSpeedHorizontal: 8
-  jumpForce: 16
+  jumpForce: 8
   fallGravityScale: 4
   grabLayer: 6
   grabDistance: 30
+  maxVerticalSpeed: 10

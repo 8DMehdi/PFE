@@ -12,26 +12,34 @@ public class PlayerFlight : MonoBehaviour
     [SerializeField] private float gravity = 5f;
     [SerializeField] private float maxVerticalSpeed = 10f;
 
+    private float lastToggleTime = 0f;
+    private float toggleCooldown = 0.2f; // 200 ms entre chaque activation
+
     private void Awake()
     {
         body = GetComponent<Rigidbody2D>();
     }
 
     private void Update()
+{
+    Debug.Log($"_canFly: {_canFly}");
+    if (Input.GetKeyDown(KeyCode.P) && Time.time - lastToggleTime > toggleCooldown)
+    
     {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            ToggleFlight();
-        }
+        ToggleFlight();
+        lastToggleTime = Time.time;
     }
+}
 
-    private void FixedUpdate()
+private void FixedUpdate()
+{
+    Debug.Log($"FixedUpdate: _canFly = {_canFly}");
+
+    if (_canFly)
     {
-        if (_canFly)
-        {
-            HandleFlying();
-        }
+        HandleFlying();
     }
+}
 
     private void HandleFlying()
     {
@@ -57,7 +65,6 @@ public class PlayerFlight : MonoBehaviour
         }
 
         body.AddForce(Vector2.down * gravity * Time.deltaTime);
-
     }
 
     public void EnableFly()
@@ -73,8 +80,12 @@ public class PlayerFlight : MonoBehaviour
     }
 
     private void ToggleFlight()
+    
     {
         _canFly = !_canFly;
         Debug.Log(_canFly ? "Flying ability enabled!" : "Flying ability disabled!");
     }
+
+    
 }
+
