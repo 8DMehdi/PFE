@@ -1,5 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+guid: 010cf1782ab735146a4b84f6a1373672
+=======
+<<<<<<< HEAD
 guid: d0e6e1f4d5080e54d8179377d8b613f6
+=======
+guid: 010cf1782ab735146a4b84f6a1373672
+>>>>>>> mehdi
+>>>>>>> b7c6dda30d7cccb725b6b675c0b0277528a1d774
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

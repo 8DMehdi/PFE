@@ -1,5 +1,17 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+<<<<<<<< HEAD:Assets/Mehdi/MehdiScene/GameMehdi.unity.meta
+guid: 54f6a00c39fbd1642bd817dac3cf6b84
+========
 guid: 47a6655b294684346807677e30b087a8
+>>>>>>>> d2f39bf8796e88afc656c0da1c141f2af4628e1e:Assets/Khady/Demo/Khady.unity.meta
+=======
+<<<<<<<< HEAD:Assets/Khady/Demo/Khady.unity.meta
+guid: 47a6655b294684346807677e30b087a8
+========
+guid: c10dfc83d0bfa9144a8c9bb2de30814b
+>>>>>>>> mehdi:Assets/Mehdi/MehdiScene/GameMehdi.unity.meta
+>>>>>>> b7c6dda30d7cccb725b6b675c0b0277528a1d774
 DefaultImporter:
   externalObjects: {}
   userData: 
