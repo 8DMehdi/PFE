@@ -10,6 +10,8 @@ public class PlayerInput : Singleton<PlayerInput>
     public static UnityAction OnGrabMaintain;
     public static UnityAction OnGrabRelease;
     public static UnityAction<Vector2> OnMove;
+    // public static UnityAction OnGrapToggle;
+
 
     [SerializeField, ReadOnly] private Vector2 rawStick;
     [SerializeField, ReadOnly] private Vector2 cleanStick;

@@ -84,6 +84,9 @@ public class PlayerController : MonoBehaviour
         PlayerInput.OnJumpReleased += OnJumpReleased;
         PlayerInput.OnGrabMaintain += StartGrab;
         PlayerInput.OnGrabRelease += StopGrab;
+
+        // PlayerInput.OnGrapToggle += ToggleGrap;
+
     }
 
     private void Start()
@@ -246,28 +249,84 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void StartGrab()
-    {
-        if (State == PlayerState.Interacting) return;
 
-        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-        RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
+private void StartGrab()
+{
+    if (!grappleUnlocked) return; // Vérifie si le grappin est débloqué
 
-        if (hit.collider == null) return;
+    if (State == PlayerState.Interacting) return;
 
-        //Check Layer
-        if (Stats.grabLayer != hit.collider.gameObject.layer) return;
+    Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+    RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
 
-        IHookable hookable = hit.collider.GetComponent<IHookable>();
-        if (hookable == null) return;
+    if (hit.collider == null) return;
 
-        HookPoint = hookable.GetHookPoint(hit.point);
-        State = PlayerState.Grabbing;
-    }
+    // Vérifie la couche de l'objet accroché
+    if (Stats.grabLayer != hit.collider.gameObject.layer) return;
+
+    IHookable hookable = hit.collider.GetComponent<IHookable>();
+    if (hookable == null) return;
+
+    HookPoint = hookable.GetHookPoint(hit.point);
+    State = PlayerState.Grabbing;
+}
+
+// private void StopGrab()
+    // {
+    //     if (State != PlayerState.Grabbing) return;
+
+    //     State = PlayerState.Falling;
+    // }
+
+    // private void StartGrab()
+    // {
+    //     if (State == PlayerState.Interacting) return;
+
+    //     Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+    //     RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
+
+    //     if (hit.collider == null) return;
+
+    //     //Check Layer
+    //     if (Stats.grabLayer != hit.collider.gameObject.layer) return;
+
+    //     IHookable hookable = hit.collider.GetComponent<IHookable>();
+    //     if (hookable == null) return;
+
+    //     HookPoint = hookable.GetHookPoint(hit.point);
+    //     State = PlayerState.Grabbing;
+    // }
     private void StopGrab()
     {
         if (State != PlayerState.Grabbing) return;
 
         State = PlayerState.Falling;
     }
+
+// ACTIVE GRAPPIN
+private bool grapplingEnabled = false;
+private bool grappleUnlocked = false;
+
+public void UnlockGrappling()
+{
+    grappleUnlocked = true;
+    Debug.Log("Grappin débloqué !");
+}
+
+private void ToggleGrap()
+{
+    grapplingEnabled = !grapplingEnabled;
+    Debug.Log($"ToggleGrap() appelé. grapplingEnabled = {grapplingEnabled}");
+
+    if (grapplingEnabled)
+    {
+        StartGrab();
+    }
+    else
+    {
+        StopGrab();
+    }
+}
+
+    
 }

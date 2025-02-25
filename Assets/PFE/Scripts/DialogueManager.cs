@@ -16,6 +16,10 @@ public class DialogueManager : MonoBehaviour
     private Queue<string> playerSentences; // Phrases du joueur
     private bool isPlayerTurn = false; // Indique si c'est au tour du joueur
 
+     // Ces deux booléens gèrent l'affichage progressif
+    // private bool isTyping = false;
+    private bool sentenceFinished = false;
+
     private void Awake()
     {
         if (Instance == null)
@@ -63,26 +67,27 @@ public void StartDialogue(DialogueData dialogue)
 
 public void DisplayNextSentence()
 {
+    string sentence = "";
+
     if (!isPlayerTurn && npcSentences.Count > 0)
     {
-        string sentence = npcSentences.Dequeue();
-        Debug.Log("NPC dit : " + sentence);
-        StopAllCoroutines();
-        StartCoroutine(TypeSentence(sentence));
-        isPlayerTurn = true;
+        sentence = npcSentences.Dequeue();
+        isPlayerTurn = true; // ✅ On change de tour avant d'afficher
     }
     else if (isPlayerTurn && playerSentences.Count > 0)
     {
-        string sentence = playerSentences.Dequeue();
-        Debug.Log("Joueur dit : " + sentence);
-        StopAllCoroutines();
-        StartCoroutine(TypeSentence(sentence));
-        isPlayerTurn = false;
+        sentence = playerSentences.Dequeue();
+        isPlayerTurn = false; // ✅ On change de tour avant d'afficher
     }
     else
     {
         EndDialogue();
+        return;
     }
+
+    Debug.Log("Affichage : " + sentence);
+    StopAllCoroutines();
+    StartCoroutine(TypeSentence(sentence));
 }
 
 private bool isTyping = false;
@@ -90,6 +95,7 @@ private bool isTyping = false;
 IEnumerator TypeSentence(string sentence)
 {
     isTyping = true;
+     sentenceFinished = false;
     dialogueText.text = "";
     foreach (char letter in sentence.ToCharArray())
     {
@@ -103,22 +109,22 @@ IEnumerator TypeSentence(string sentence)
         yield return new WaitForSeconds(typingSpeed);
     }
     isTyping = false;
+    sentenceFinished = true;
 }
-
 void Update()
-{
-    if (Input.GetKeyDown(KeyCode.E))
     {
-        if (isTyping)
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            isTyping = false; 
-        }
-        else
-        {
-            DisplayNextSentence();
+            if (!sentenceFinished)
+            {
+                isTyping = false;
+            }
+            else
+            {
+                DisplayNextSentence();
+            }
         }
     }
-}
 
     public void EndDialogue()
     {
