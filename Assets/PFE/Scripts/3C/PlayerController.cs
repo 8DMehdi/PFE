@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     private Camera cam;
     private Rigidbody2D body;
     private CapsuleCollider2D col;
+    private bool grapBool = false;
 
     [SerializeField, ReadOnly] private bool _isTouchingGround;
     public bool IsTouchingGround
@@ -163,11 +164,15 @@ public class PlayerController : MonoBehaviour
                 body.gravityScale = Stats.fallGravityScale;
                 break;
             case PlayerState.Grabbing:
-                lineRenderer.SetPosition(0, HookPoint);
-                distanceJoint.connectedAnchor = HookPoint;
+                if(grapBool == true)
+                {
+                    lineRenderer.SetPosition(0, HookPoint);
+                    distanceJoint.connectedAnchor = HookPoint;
 
-                distanceJoint.enabled = true;
-                lineRenderer.enabled = true;
+                    distanceJoint.enabled = true;
+                    lineRenderer.enabled = true;
+                }
+                
                 break;
             case PlayerState.Interacting:
                 break;
@@ -367,5 +372,14 @@ private void HandleFlying()
     {
         _canFly = false; // Désactiver la capacité de voler
         Debug.Log("Flying ability disabled!");
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("grapBool"))
+        {
+            grapBool = true;
+            Debug.Log("Variable changée à 1");
+        }
     }
 }
