@@ -45,3 +45,6 @@ public class PlayerInput : Singleton<PlayerInput>
         OnMove.Invoke(cleanStick);
     }
 }
+
+
+
