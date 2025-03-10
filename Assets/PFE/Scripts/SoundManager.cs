@@ -88,6 +88,11 @@ public void PlayCollectSound()
     {
         PlayEffect(collectSound);
     }
+
+public void PlayJumpSound()
+    {
+        PlayEffect(jumpSound);
+    }
     public void PlayFlySound()
     {
         PlayEffect(flySound);

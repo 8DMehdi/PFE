@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcName: NPC-1
   npcSentences:
-  - hello cv
+  - Lorem Ipsum is simply dummy text of the printing and typesetting industry.
   playerSentences:
-  - oui et toi
+  - "Contrairement \xE0 une opinion r\xE9pandue, le Lorem Ipsum n'est pas simplement
+    du texte al\xE9atoire."

@@ -73,6 +73,8 @@ public class PlayerController : MonoBehaviour
     public LineRenderer lineRenderer;
     public SpringJoint2D distanceJoint;
 
+    public bool hasKey = false;
+
 
     [SerializeField] private float flySpeed = 5f; // Vitesse de vol
     [SerializeField] private float levitationForce = 5f; // Force de lévitation
@@ -263,6 +265,7 @@ public class PlayerController : MonoBehaviour
     {
         State = PlayerState.Jumping;
         body.AddForce(Vector2.up * Stats.jumpForce, ForceMode2D.Impulse);
+        SoundManager.Instance.PlayJumpSound();
     }
 
     private void OnJumpReleased()

@@ -1391,12 +1391,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bf33f5319ef9434c8434dce7d67f5f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue:
-    npcName: NPC0
-    npcSentences:
-    - Hola
-    playerSentences:
-    - what's up
+  dialogue: {fileID: 11400000, guid: 78a29adb776a1f84dbf90c9e4169b32d, type: 2}
 --- !u!61 &452958755
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4436,12 +4431,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bf33f5319ef9434c8434dce7d67f5f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue:
-    npcName: NPC1
-    npcSentences:
-    - Hola
-    playerSentences:
-    - "coma t\xE9 esta"
+  dialogue: {fileID: 0}
 --- !u!61 &1433932451
 BoxCollider2D:
   m_ObjectHideFlags: 0
