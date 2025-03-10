@@ -147,7 +147,7 @@ public class PlayerController : MonoBehaviour
         IsFalling = body.velocity.y < -1f;
 
         //Check Touching Ground
-        IsTouchingGround = Physics2D.Raycast(body.position + Vector2.down * (col.size.y / 2 + 0.1f), Vector2.down, .2f);
+        IsTouchingGround = Physics2D.Raycast(body.position + Vector2.down * (col.size.y / 2 + 0.1f), Vector2.down, .2f, ~LayerMask.GetMask("Grapping"));
         Debug.DrawRay(body.position + Vector2.down * (col.size.y / 2 + 0.1f), Vector2.down * .2f, IsTouchingGround ? Color.green : Color.red);
     }
 
@@ -303,6 +303,7 @@ public class PlayerController : MonoBehaviour
 
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
+        //RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right);
 
         if (hit.collider == null) return;
 
