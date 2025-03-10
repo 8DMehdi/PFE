@@ -32,14 +32,14 @@ MonoBehaviour:
   grabSpeed: 20
 =======
   speed: 25
-  airSpeed: 23
+  airSpeed: 30
   grabSpeed: 30
 >>>>>>> cb48a3af12e96c94770671bf226638390c58725f
   maxSpeedGrab: 25
   maxSpeedVertical: 20
   maxSpeedHorizontal: 15
   jumpForce: 19
-  fallGravityScale: 8
+  fallGravityScale: 10
   grabLayer: 6
 <<<<<<< HEAD
   grabDistance: 33
@@ -47,5 +47,9 @@ MonoBehaviour:
 >>>>>>> a027d51c788c22a68aff5b9571509b73ba3820ef
 =======
   grabDistance: 25
+<<<<<<< HEAD
   maxVerticalSpeed: 13
 >>>>>>> cb48a3af12e96c94770671bf226638390c58725f
+=======
+  maxVerticalSpeed: 15
+>>>>>>> main
