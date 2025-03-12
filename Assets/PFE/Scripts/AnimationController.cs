@@ -81,7 +81,7 @@ public class AnimationController : MonoBehaviour
         if (other.CompareTag("Evolution1")) 
         {
             evolution = 2 ;
-            Debug.Log("Variable changée à 1");
+            Debug.Log("Variable changï¿½e ï¿½ 1");
         }
     }
 }

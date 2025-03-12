@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     private CapsuleCollider2D col;
     private bool grapBool = false;
 
-    [SerializeField, ReadOnly] private bool _isTouchingGround;
+    [SerializeField, ReadOnly] public bool _isTouchingGround;
     public bool IsTouchingGround
     {
         get => _isTouchingGround;
