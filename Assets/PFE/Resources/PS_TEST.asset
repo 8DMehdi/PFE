@@ -15,7 +15,7 @@ MonoBehaviour:
   brakeSpeed: 0.5
   speed: 25
   airSpeed: 30
-  grabSpeed: 120
+  grabSpeed: 40
   maxSpeedGrab: 25
   maxSpeedVertical: 20
   maxSpeedHorizontal: 15
