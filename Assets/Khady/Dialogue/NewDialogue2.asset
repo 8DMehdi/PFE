@@ -12,9 +12,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3e3bd9891417e64b837dca7e65401ef, type: 3}
   m_Name: NewDialogue2
   m_EditorClassIdentifier: 
-  npcName: NPC-2
+  npcName: Atlas
   npcSentences:
-  - Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+  - Comme c'est curieux...
+  - 'Oh, pardonnez mon impertinence. '
+  - "Fut un temps, nous \xE9tions nombreux \xE0 travailler ici, les plus grands faiseurs
+    de soie."
+  - "Mais depuis la perte de nos ailes, nombre de mes camarades ont perdu leur \xE9tincelle
+    de vie..."
+  - Et de travail...
+  - "Mais ce bon vieux Atlas que tu vois l\xE0 reste vaillant. "
+  - "Le jour de la chute de l'ancienne reine, je me suis enfuis avec des tr\xE9sors
+    du royaume."
+  - "Je d\xE9tiens un artefact puissant. "
+  - "Une perle sp\xE9ciale qui permet aux jeunes pousses comme toi d'\xE9voluer. "
+  - "J'ai  gard\xE9 le secret de cette perle en attendant l'arriv\xE9e d'une chenille
+    vigoureuse. "
+  - "Je te la donne. Prend cette perle. Je te souhaite bonne chance dans ton p\xE9riple. "
   playerSentences:
-  - "Contrairement \xE0 une opinion r\xE9pandue, le Lorem Ipsum n'est pas simplement
-    du texte al\xE9atoire."
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 

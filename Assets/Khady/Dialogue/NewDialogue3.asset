@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3e3bd9891417e64b837dca7e65401ef, type: 3}
+  m_Name: NewDialogue3
+  m_EditorClassIdentifier: 
+  npcName: Silk
+  npcSentences:
+  - "Es-tu vraiment s\xFBr(e) de toi ?"
+  - "Je sais que c'est ta d\xE9cision et je suis tr\xE8s touch\xE9e de ton envie
+    de reprendre lle tr\xF4ne..."
+  - "... mais la route jusqu'au chateau est longue et p\xE9rilleuse... "
+  - 'Luna, la tyranique est aux aguets. '
+  - "Depuis notre fuite, elle a ordonn\xE9 \xE0 sa garde rapproch\xE9e de d\xE9chirer
+    les ailes de tous les habitants..."
+  - "... de peur d'\xEAtre d\xE9tr\xF4n\xE9e \xE0 son tour."
+  - 'Rien de ce que je dis ne te fera changer d''avis n''est-ce pas ? '
+  - "Tu as ma b\xE9n\xE9diction, mais fait attention. "
+  - 'Un ami, Atlas, pourra t''aider, il dirigeait autrefois la fabrique de fil. '
+  - '... '
+  - "Tu as tellement grandis, je suis fi\xE8re de toi. "
+  playerSentences:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
