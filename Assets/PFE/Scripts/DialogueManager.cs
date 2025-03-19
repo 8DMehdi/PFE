@@ -36,8 +36,41 @@ public class DialogueManager : MonoBehaviour
         dialoguePanel.SetActive(false);
     }
 
+// public void StartDialogue(DialogueData dialogue)
+// {
+//     if (dialogue == null || dialogue.npcSentences.Count == 0)
+//     {
+//         FindObjectOfType<DialogueCameraZoom>().StartDialogue();
+
+//         Debug.LogError("Le dialogue est vide ou non assigné !");
+//         return;
+//     }
+
+//     npcSentences.Clear();
+//     playerSentences.Clear();
+
+//     nameText.text = dialogue.npcName;
+
+//     foreach (string sentence in dialogue.npcSentences)
+//     {
+//         npcSentences.Enqueue(sentence);
+//     }
+
+//     foreach (string sentence in dialogue.playerSentences)
+//     {
+//         playerSentences.Enqueue(sentence);
+//     }
+
+//     dialoguePanel.SetActive(true);
+//     isPlayerTurn = false;
+//     DisplayNextSentence();
+// }
+
 public void StartDialogue(DialogueData dialogue)
 {
+    // 🔹 Toujours activer le zoom AVANT de vérifier si le dialogue est vide
+    FindObjectOfType<DialogueCameraZoom>()?.StartDialogue(); 
+
     if (dialogue == null || dialogue.npcSentences.Count == 0)
     {
         Debug.LogError("Le dialogue est vide ou non assigné !");
@@ -63,6 +96,7 @@ public void StartDialogue(DialogueData dialogue)
     isPlayerTurn = false;
     DisplayNextSentence();
 }
+
 
 
 public void DisplayNextSentence()
@@ -129,5 +163,7 @@ void Update()
     public void EndDialogue()
     {
         dialoguePanel.SetActive(false);
+        FindObjectOfType<DialogueCameraZoom>().EndDialogue();
+
     }
 }
