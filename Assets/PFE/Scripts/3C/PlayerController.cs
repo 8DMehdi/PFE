@@ -318,6 +318,7 @@ public class PlayerController : MonoBehaviour
 
         HookPoint = hookable.GetHookPoint(hit.point);
         State = PlayerState.Grabbing;
+        body.gravityScale = 3;
     }
     private void StopGrab()
     {
