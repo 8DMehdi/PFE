@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
 
     public AnimationController animationController;
 
-    [SerializeField, ReadOnly] private bool _isTouchingGround;
+    [SerializeField, ReadOnly] public bool _isTouchingGround;
     public bool IsTouchingGround
     {
         get => _isTouchingGround;
@@ -39,7 +39,6 @@ public class PlayerController : MonoBehaviour
             {
                 OnFloorContactChange(value);
             }
-
             _isTouchingGround = value;
         }
     }
@@ -68,11 +67,11 @@ public class PlayerController : MonoBehaviour
                 Debug.Log($"Player State: {_state} -> {value}");
                 OnPlayerStateChange(_state, value);
             }
+
             _state = value;
         }
     }
     [SerializeField, ReadOnly] private PlayerState _state = PlayerState.Moving;
-
     [SerializeField, Expandable] public PlayerStat Stats;
     [SerializeField, ReadOnly] private bool _canDoubleJump = false;
 
@@ -85,7 +84,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float levitationForce = 5f; // Force de lévitation
     [SerializeField] private float gravity = 5f; // Gravité appliquée pendant le vol
     private bool _canFly = false; // Capacité de voler activée/désactivée
-    public bool hasTalkedToLastNPC = false;
+     public bool hasTalkedToLastNPC = false;
     private void Awake()
     {
         cam = Camera.main;
@@ -128,53 +127,45 @@ public class PlayerController : MonoBehaviour
         {
             HandleFlying(); // Gérer le vol si activé
         }
-         }
 
-// private void Update()
-// {
-//     if (_canFly)
-//     {
-//         HandleFlying(); // Gérer le vol si activé
-//     }
-
-//     // Vérifier si la touche "P" est enfoncée pour activer ou désactiver le vol
-//     if (hasTalkedToLastNPC && Input.GetKeyDown(KeyCode.P))
-//     {
-//         if (_canFly)
-//         {
-//             DisableFly(); // Désactiver la capacité de voler
-//         }
-//         else
-//         {
-//             EnableFly(); // Activer la capacité de voler
-//         }
-//     }
-// }
-
-private void FixedUpdate()
-{
-    if (State == PlayerState.Interacting) return;
-
-    // Clamp Speed
-    if (State == PlayerState.Grabbing)
-    {
-        if (body.velocity.magnitude > Stats.maxSpeedGrab)
+        // Vérifier si la touche "P" est enfoncée pour activer ou désactiver le vol
+        if (Input.GetKeyDown(KeyCode.P))
         {
-            body.velocity = body.velocity.normalized * Stats.maxSpeedGrab;
+            if (_canFly)
+            {
+                DisableFly(); // Désactiver la capacité de voler
+            }
+            else
+            {
+                EnableFly(); // Activer la capacité de voler
+            }
         }
     }
-    else
+
+    private void FixedUpdate()
     {
-        Vector2 velocity = body.velocity;
-        velocity.x = Mathf.Clamp(velocity.x, -Stats.maxSpeedHorizontal, Stats.maxSpeedHorizontal);
-        velocity.y = Mathf.Clamp(velocity.y, -Stats.maxSpeedVertical, Stats.maxSpeedVertical);
-        body.velocity = velocity;
-    }
+        if (State == PlayerState.Interacting) return;
 
-    // IsFalling
-    IsFalling = body.velocity.y < -1f;
+        //Clamp Speed
+        if (State == PlayerState.Grabbing)
+        {
+            if(body.velocity.magnitude > Stats.maxSpeedGrab)
+            {
+                body.velocity = body.velocity.normalized * Stats.maxSpeedGrab;
+            }
+        }
+        else
+        {
+            Vector2 velocity = body.velocity;
+            velocity.x = Mathf.Clamp(velocity.x, -Stats.maxSpeedHorizontal, Stats.maxSpeedHorizontal);
+            velocity.y = Mathf.Clamp(velocity.y, -Stats.maxSpeedVertical, Stats.maxSpeedVertical);
+            body.velocity = velocity;
+        }
 
-    // Check Touching Ground en ignorant les checkpoints
+        //IsFalling
+        IsFalling = body.velocity.y < -1f;
+
+         // Check Touching Ground en ignorant les checkpoints
     RaycastHit2D hit = Physics2D.Raycast(body.position + Vector2.down * (col.size.y / 2 + 0.1f), Vector2.down, .2f);
 
     if (hit.collider != null && hit.collider.GetComponent<Checkpoint>() == null) 
@@ -190,6 +181,10 @@ private void FixedUpdate()
     Debug.DrawRay(body.position + Vector2.down * (col.size.y / 2 + 0.1f), Vector2.down * .2f, IsTouchingGround ? Color.green : Color.red);
 }
 
+    //     //Check Touching Ground
+    //     IsTouchingGround = Physics2D.Raycast(body.position + Vector2.down * (col.size.y / 2 + 0.1f), Vector2.down, .2f, ~LayerMask.GetMask("Grapping"));
+    //     Debug.DrawRay(body.position + Vector2.down * (col.size.y / 2 + 0.1f), Vector2.down * .2f, IsTouchingGround ? Color.green : Color.red);
+    // }
 
     private void OnPlayerStateChange(PlayerState oldState, PlayerState newState)
     {
@@ -214,8 +209,10 @@ private void FixedUpdate()
                     lineRenderer.SetPosition(0, HookPoint);
                     distanceJoint.connectedAnchor = HookPoint;
 
-                distanceJoint.enabled = true;
-                lineRenderer.enabled = true;
+                    distanceJoint.enabled = true;
+                    lineRenderer.enabled = true;
+                }
+                
                 break;
             case PlayerState.Interacting:
                 break;
@@ -279,8 +276,6 @@ private void FixedUpdate()
                 body.AddForce(direction * Stats.speed, ForceMode2D.Force);
             }
         }
-        // SoundManager.Instance.PlayLandSound();
-
     }
 
     private void OnJumpPressed()
@@ -305,30 +300,41 @@ private void FixedUpdate()
         }
         else if (_canDoubleJump)
         {
-             body.gravityScale = 1f; // Diminue temporairement la gravité
+
+            body.gravityScale = 1f; // Diminue temporairement la gravité
              body.velocity = new Vector2(body.velocity.x, 0); 
              Jump(Stats.jumpForce);
              _canDoubleJump = false;
              StartCoroutine(ResetGravity());
+            // body.gravityScale = 3;
+            // Jump(Stats.jumpForce * 0.8f);
+            // _canDoubleJump = false;
+            
         }
+    
 
     }
+    // private void Jump(float force)
+    // {
+    //     State = PlayerState.Jumping;
+    //     UpdateAnimation();
+    //     body.AddForce(Vector2.up * Stats.jumpForce, ForceMode2D.Impulse);
+    //     body.gravityScale = 3;
 
-    private IEnumerator ResetGravity()
+    // }
+     private IEnumerator ResetGravity()
 {
     yield return new WaitForSeconds(0.2f);
     body.gravityScale = Stats.fallGravityScale;
 }
-    private void Jump(float force)
+
+ private void Jump(float force)
     {
         State = PlayerState.Jumping;
         UpdateAnimation();
         body.AddForce(Vector2.up * Stats.jumpForce, ForceMode2D.Impulse);
-        body.gravityScale = 3;
-
         SoundManager.Instance.PlayJumpSound();
     }
-
     private void OnJumpReleased()
     {
         if (State != PlayerState.Jumping) return;
@@ -336,21 +342,26 @@ private void FixedUpdate()
         State = PlayerState.Falling;
         UpdateAnimation();
     }
-
     private void OnFloorContactChange(bool isTouchingGround)
-{
-    if (isTouchingGround)
     {
+        UpdateAnimation();
+        if (isTouchingGround)
+         {
         Debug.Log("Player landed!");
         SoundManager.Instance.PlayLandSound();
         State = PlayerState.Moving;
         _canDoubleJump = false;
     }
-    else
-    {
-        if (State != PlayerState.Jumping) State = PlayerState.Falling;
+        // {
+        //     //Atterrissage
+        //     State = PlayerState.Moving;
+        //     _canDoubleJump = false;
+        // }
+        else
+        {
+            if (State != PlayerState.Jumping) State = PlayerState.Falling;
+        }
     }
-}
     private void OnVelocityYChange(bool isFalling)
     {
         if (isFalling)
@@ -368,6 +379,7 @@ private void FixedUpdate()
 
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
+        //RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right);
 
         if (hit.collider == null) return;
 
@@ -390,6 +402,45 @@ private void FixedUpdate()
 
         State = PlayerState.Falling;
     }
+
+// private void HandleFlying()
+// {
+//     float moveHorizontal = Input.GetAxis("Horizontal");
+
+//     // Appliquer une vitesse horizontale seulement si une touche est pressée
+//     if (Mathf.Abs(moveHorizontal) > 0.1f)
+//     {
+//         body.velocity = new Vector2(moveHorizontal * flySpeed, body.velocity.y);
+//     }
+
+//     // Limiter la vitesse verticale
+//     if (Mathf.Abs(body.velocity.y) > Stats.MaxVerticalSpeed)
+//     {
+//         body.velocity = new Vector2(body.velocity.x, Mathf.Sign(body.velocity.y) * Stats.MaxVerticalSpeed);
+//     }
+
+//     // Appliquer une force de lévitation douce
+//     if (Mathf.Abs(moveHorizontal) > 0.5f)
+//     {
+//         body.velocity = new Vector2(body.velocity.x, Mathf.Lerp(body.velocity.y, levitationForce, 0.5f));
+//     }
+//     else
+//     {
+//         // Appliquer une descente en douceur lorsqu'aucune touche n'est pressée
+//         body.velocity = new Vector2(body.velocity.x, Mathf.Lerp(body.velocity.y, -levitationForce, 0.5f));
+//     }
+
+//     // Appliquer la gravité manuellement
+//     body.AddForce(Vector2.down * gravity * Time.deltaTime); // Ajustez la gravité ici si nécessaire
+
+//     // Ajouter un léger mouvement latéral lors de la descente uniquement si une touche est enfoncée
+//     if (Mathf.Abs(moveHorizontal) > 0.1f)
+//     {
+//         body.velocity += new Vector2(moveHorizontal * 10f, 0);
+//     }
+
+//     SoundManager.Instance.PlayFlySound();
+// }
 
 private void HandleFlying()
 {
@@ -429,8 +480,6 @@ private void HandleFlying()
 
     SoundManager.Instance.PlayFlySound();
 }
-
-
     public void EnableFly()
     {
         _canFly = true; // Activer la capacité de voler

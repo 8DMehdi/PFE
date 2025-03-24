@@ -4091,6 +4091,8 @@ MonoBehaviour:
   flySound: {fileID: 8300000, guid: 03f9e98724b9fff4da1564fda43435eb, type: 3}
   landSound: {fileID: 0}
   deathSound: {fileID: 8300000, guid: da1b160ba7e6b4bf0a40defe83b864d4, type: 3}
+  keySound: {fileID: 0}
+  doorSound: {fileID: 0}
   musicVolume: 0.3
   effectsVolume: 0.5
 --- !u!4 &203922703
@@ -30388,11 +30390,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3502441213320571029, guid: ae1a1282f1cffc34a8e51725db132e76, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 322.3
+      value: 388.7
       objectReference: {fileID: 0}
     - target: {fileID: 3502441213320571029, guid: ae1a1282f1cffc34a8e51725db132e76, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 111.12
+      value: 118.7
       objectReference: {fileID: 0}
     - target: {fileID: 3502441213320571029, guid: ae1a1282f1cffc34a8e51725db132e76, type: 3}
       propertyPath: m_LocalPosition.z
