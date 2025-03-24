@@ -7,14 +7,18 @@ public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager Instance;
 
-    public GameObject dialoguePanel; // Le panneau de dialogue
-    public Text nameText; // Texte pour le nom du NPC
-    public Text dialogueText; // Texte pour le dialogue
-    public float typingSpeed = 0.05f; // Vitesse d'écriture du texte
+    public GameObject dialoguePanel;
+    public Text nameText;
+    public Text dialogueText;
+    public float typingSpeed = 0.05f;
 
-    private Queue<string> npcSentences; // Phrases du NPC
-    private Queue<string> playerSentences; // Phrases du joueur
-    private bool isPlayerTurn = false; // Indique si c'est au tour du joueur
+    private Queue<string> npcSentences;
+    private Queue<string> playerSentences;
+    private bool isPlayerTurn = false;
+    private bool sentenceFinished = false;
+
+    private AudioSource voiceSource;
+    private DialogueData currentDialogue;
 
     private void Awake()
     {
@@ -25,14 +29,22 @@ public class DialogueManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
+            return;
         }
 
         npcSentences = new Queue<string>();
         playerSentences = new Queue<string>();
         dialoguePanel.SetActive(false);
+
+        // Ajoute un AudioSource si inexistant
+        voiceSource = GetComponent<AudioSource>();
+        if (voiceSource == null)
+        {
+            voiceSource = gameObject.AddComponent<AudioSource>();
+        }
     }
 
-    public void StartDialogue(Dialogue dialogue)
+    public void StartDialogue(DialogueData dialogue)
     {
         if (dialogue == null || dialogue.npcSentences.Count == 0)
         {
@@ -40,6 +52,7 @@ public class DialogueManager : MonoBehaviour
             return;
         }
 
+        currentDialogue = dialogue;
         npcSentences.Clear();
         playerSentences.Clear();
 
@@ -62,38 +75,81 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayNextSentence()
     {
+        string sentence = "";
+
         if (!isPlayerTurn && npcSentences.Count > 0)
         {
-            string sentence = npcSentences.Dequeue();
-            StopAllCoroutines();
-            StartCoroutine(TypeSentence(sentence));
+            sentence = npcSentences.Dequeue();
             isPlayerTurn = true;
         }
         else if (isPlayerTurn && playerSentences.Count > 0)
         {
-            string sentence = playerSentences.Dequeue();
-            StopAllCoroutines();
-            StartCoroutine(TypeSentence(sentence));
+            sentence = playerSentences.Dequeue();
             isPlayerTurn = false;
         }
         else
         {
             EndDialogue();
+            return;
         }
+
+        // Joue le son AVANT d'afficher la phrase
+        PlayNPCVoice();
+
+        StopAllCoroutines();
+        StartCoroutine(TypeSentence(sentence));
     }
+
+    private bool isTyping = false;
 
     IEnumerator TypeSentence(string sentence)
     {
+        isTyping = true;
+        sentenceFinished = false;
         dialogueText.text = "";
+
         foreach (char letter in sentence.ToCharArray())
         {
+            if (!isTyping)
+            {
+                dialogueText.text = sentence;
+                break;
+            }
+
             dialogueText.text += letter;
             yield return new WaitForSeconds(typingSpeed);
+        }
+        isTyping = false;
+        sentenceFinished = true;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (!sentenceFinished)
+            {
+                isTyping = false;
+            }
+            else
+            {
+                DisplayNextSentence(); // Le son est joué ici
+            }
         }
     }
 
     public void EndDialogue()
     {
         dialoguePanel.SetActive(false);
+    }
+
+    private void PlayNPCVoice()
+    {
+        if (voiceSource != null && currentDialogue != null && currentDialogue.npcVoice != null)
+        {
+            voiceSource.Stop(); // Arrête le son précédent pour éviter des chevauchements
+            voiceSource.clip = currentDialogue.npcVoice;
+            voiceSource.Play();
+        }
     }
 }

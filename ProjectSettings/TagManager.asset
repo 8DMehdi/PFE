@@ -16,8 +16,8 @@ TagManager:
   - Water
   - UI
   - Grapping
-  - 
-  - 
+  - PostProcessing
+  - UIFX
   - 
   - 
   - 
@@ -44,4 +44,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: UIFX
+    uniqueID: 3659517461
     locked: 0
