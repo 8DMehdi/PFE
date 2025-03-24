@@ -14,9 +14,11 @@ public class SoundManager : MonoBehaviour
     public AudioClip flySound;      // Son de vol
     public AudioClip landSound;     // Son d'atterrissage
     public AudioClip deathSound;    // Son de mort
-
+    public AudioClip keySound;     // Son d'atterrissage
+    public AudioClip doorSound;
     private AudioSource musicSource;
     private AudioSource effectsSource;
+    
 
     public float musicVolume = 1f;
     public float effectsVolume = 1f;
@@ -107,4 +109,15 @@ public void PlayJumpSound()
     {
         PlayEffect(deathSound);
     }
+
+    public void PlayKeySound()
+    {
+        PlayEffect(keySound);
+    }
+    public void PlayDoorSound()
+    {
+        PlayEffect(doorSound);
+    }
+
+
 }

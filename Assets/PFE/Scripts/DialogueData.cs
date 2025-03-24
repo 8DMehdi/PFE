@@ -1,3 +1,18 @@
+// using System.Collections.Generic;
+// using UnityEngine;
+
+// [CreateAssetMenu(fileName = "NewDialogue", menuName = "Dialogue System/Dialogue")]
+// public class DialogueData : ScriptableObject
+// {
+//     public string npcName;
+
+//     [TextArea(3, 5)]
+//     public List<string> npcSentences;
+
+//     [TextArea(3, 5)]
+//     public List<string> playerSentences;
+// }
+
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -5,6 +20,9 @@ using UnityEngine;
 public class DialogueData : ScriptableObject
 {
     public string npcName;
+    public AudioClip npcVoice;
+
+    public AudioClip npcVoiceClip; // Son spécifique au PNJ
 
     [TextArea(3, 5)]
     public List<string> npcSentences;

@@ -62,5 +62,7 @@ public class Door : MonoBehaviour
     {
         doorObject.transform.position += new Vector3(0, 5, 0);
         Debug.Log("Porte ouverte !");
+        SoundManager.Instance.PlayDoorSound();
+
     }
 }
