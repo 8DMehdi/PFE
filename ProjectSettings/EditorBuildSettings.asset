@@ -20,7 +20,13 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Justine/Cinematique.unity
     guid: eadb869dfe9069a46bad5082173bb662
-  - enabled: 1
+  - enabled: 0
     path: Assets/Justine/Scene.unity
     guid: 3800fb46c91641f43bd2d9d4a49a69b9
+  - enabled: 1
+    path: Assets/Cinematique.unity
+    guid: 1931812be35f636459b976cf7a9f9b9d
+  - enabled: 1
+    path: Assets/Khady/Demo/Khady.unity
+    guid: 54f6a00c39fbd1642bd817dac3cf6b84
   m_configObjects: {}

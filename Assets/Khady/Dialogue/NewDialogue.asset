@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: NewDialogue
   m_EditorClassIdentifier: 
   npcName: Hawk
+  npcVoice: {fileID: 0}
+  npcVoiceClip: {fileID: 0}
   npcSentences:
   - "Qui va l\xE0 ?"
   - "Oh d\xE9sol\xE9, je ne voulais pas t'effrayer, mais les habitudes ont la vie
