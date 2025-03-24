@@ -60,7 +60,6 @@ public class PlayerController : MonoBehaviour
                 Debug.Log($"Player State: {_state} -> {value}");
                 OnPlayerStateChange(_state, value);
             }
-
             _state = value;
         }
     }
@@ -240,6 +239,8 @@ private void FixedUpdate()
                 body.AddForce(direction * Stats.speed, ForceMode2D.Force);
             }
         }
+        // SoundManager.Instance.PlayLandSound();
+
     }
 
     private void OnJumpPressed()
@@ -290,19 +291,21 @@ private void FixedUpdate()
         if (State != PlayerState.Jumping) return;
         State = PlayerState.Falling;
     }
+
     private void OnFloorContactChange(bool isTouchingGround)
+{
+    if (isTouchingGround)
     {
-        if (isTouchingGround)
-        {
-            //Atterrissage
-            State = PlayerState.Moving;
-            _canDoubleJump = false;
-        }
-        else
-        {
-            if (State != PlayerState.Jumping) State = PlayerState.Falling;
-        }
+        Debug.Log("Player landed!");
+        SoundManager.Instance.PlayLandSound();
+        State = PlayerState.Moving;
+        _canDoubleJump = false;
     }
+    else
+    {
+        if (State != PlayerState.Jumping) State = PlayerState.Falling;
+    }
+}
     private void OnVelocityYChange(bool isFalling)
     {
         if (isFalling)
@@ -373,7 +376,7 @@ private void HandleFlying()
         body.velocity += new Vector2(moveHorizontal * 10f, 0);
     }
 
-    // SoundManager.Instance.PlayFlySound();
+    SoundManager.Instance.PlayFlySound();
 }
 
 
