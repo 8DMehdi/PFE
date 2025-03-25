@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using NaughtyAttributes;
+using static UnityEngine.Rendering.DebugUI;
 
 public enum PlayerState
 {
@@ -21,8 +22,14 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D body;
     private CapsuleCollider2D col;
     private bool grapBool = false;
+    private int evolution = 1;
+    private bool atterisage = false;
 
-    [SerializeField, ReadOnly] private bool _isTouchingGround;
+    public Animator animator;
+
+    public AnimationController animationController;
+
+    [SerializeField, ReadOnly] public bool _isTouchingGround;
     public bool IsTouchingGround
     {
         get => _isTouchingGround;
@@ -85,6 +92,7 @@ public class PlayerController : MonoBehaviour
         cam = Camera.main;
         body = GetComponent<Rigidbody2D>();
         col = GetComponent<CapsuleCollider2D>();
+        animator = GetComponent<Animator>();
 
         PlayerInput.OnMove += Move;
         PlayerInput.OnInteract += Interact;
@@ -96,12 +104,25 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        animator = GetComponentInChildren<Animator>();
         distanceJoint.enabled = false;
         lineRenderer.enabled = false;
+
     }
 
     private void Update()
     {
+        if (_isTouchingGround)
+        {
+            animationController.RUN();
+        }  
+        if (State != PlayerState.Moving && State != PlayerState.Jumping && State != PlayerState.Falling && State != PlayerState.Grabbing)
+        {
+            if (animationController != null)
+            {
+                //animationController.Idle();
+            }
+        }
         lineRenderer.SetPosition(1, transform.position);
         
         if (_canFly)
@@ -147,24 +168,29 @@ public class PlayerController : MonoBehaviour
         IsFalling = body.velocity.y < -1f;
 
         //Check Touching Ground
-        IsTouchingGround = Physics2D.Raycast(body.position + Vector2.down * (col.size.y / 2 + 0.1f), Vector2.down, .2f);
+        IsTouchingGround = Physics2D.Raycast(body.position + Vector2.down * (col.size.y / 2 + 0.1f), Vector2.down, .2f, ~LayerMask.GetMask("Grapping"));
         Debug.DrawRay(body.position + Vector2.down * (col.size.y / 2 + 0.1f), Vector2.down * .2f, IsTouchingGround ? Color.green : Color.red);
     }
 
     private void OnPlayerStateChange(PlayerState oldState, PlayerState newState)
     {
+
         switch (newState)
         {
             case PlayerState.Moving:
+                animationController.RUN();
                 body.gravityScale = 3;
                 break;
             case PlayerState.Jumping:
+                animationController.Jump();
                 break;
             case PlayerState.Falling:
+                //animationController.Fall();
                 body.gravityScale = Stats.fallGravityScale;
                 break;
             case PlayerState.Grabbing:
-                if(grapBool == true)
+                animationController.Grab();
+                if (grapBool == true)
                 {
                     lineRenderer.SetPosition(0, HookPoint);
                     distanceJoint.connectedAnchor = HookPoint;
@@ -177,6 +203,8 @@ public class PlayerController : MonoBehaviour
             case PlayerState.Interacting:
                 break;
             default:
+               //animationController.Idle();
+                //animator.Play("idle");
                 break;
         }
 
@@ -258,8 +286,10 @@ public class PlayerController : MonoBehaviour
         }
         else if (_canDoubleJump)
         {
+            body.gravityScale = 3;
             Jump(Stats.jumpForce * 0.8f);
             _canDoubleJump = false;
+            
         }
     
 
@@ -267,16 +297,22 @@ public class PlayerController : MonoBehaviour
     private void Jump(float force)
     {
         State = PlayerState.Jumping;
+        UpdateAnimation();
         body.AddForce(Vector2.up * Stats.jumpForce, ForceMode2D.Impulse);
+        body.gravityScale = 3;
+
     }
 
     private void OnJumpReleased()
     {
         if (State != PlayerState.Jumping) return;
+
         State = PlayerState.Falling;
+        UpdateAnimation();
     }
     private void OnFloorContactChange(bool isTouchingGround)
     {
+        UpdateAnimation();
         if (isTouchingGround)
         {
             //Atterrissage
@@ -299,10 +335,13 @@ public class PlayerController : MonoBehaviour
 
     private void StartGrab()
     {
+        UpdateAnimation();
+        animationController.Grab();
         if (State == PlayerState.Interacting) return;
 
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
+        //RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right);
 
         if (hit.collider == null) return;
 
@@ -314,9 +353,13 @@ public class PlayerController : MonoBehaviour
 
         HookPoint = hookable.GetHookPoint(hit.point);
         State = PlayerState.Grabbing;
+        body.gravityScale = 3;
+
+        //OnFloorContactChange(_isTouchingGround);
     }
     private void StopGrab()
     {
+        UpdateAnimation();
         if (State != PlayerState.Grabbing) return;
 
         State = PlayerState.Falling;
@@ -380,6 +423,46 @@ private void HandleFlying()
         {
             grapBool = true;
             Debug.Log("Variable changée à 1");
+        }
+        if (other.CompareTag("Evolution1"))
+        {
+            evolution = 2;
+            Debug.Log("Variable chang�e � 1");
+        }
+    }
+
+    private void UpdateAnimation()
+    {
+        Debug.Log("Animation State Change: " + State + ", Current Animation: " + animator.GetCurrentAnimatorStateInfo(0).IsName("RUN"));
+
+        if (animator == null)
+        {
+            Debug.LogError("Animator non assigné !");
+            return;
+        }
+
+        Debug.Log("UpdateAnimation appelé. État actuel : " + State);
+
+        switch (State)
+        {
+            case PlayerState.Moving:
+                Debug.Log("Animation RUN déclenchée !");
+                animationController.RUN();
+                //animator.Play(evolution == 1 ? "RUN" : "RUN2");
+                break;
+            case PlayerState.Jumping:
+                atterisage = true;
+                animationController.Jump();
+                break;
+            case PlayerState.Falling:
+                animator.Play("FALL");
+                break;
+            case PlayerState.Grabbing:
+                animator.Play("GRAB");
+                break;
+            case PlayerState.Interacting:
+                animator.Play("INTERACT");
+                break;
         }
     }
 }
