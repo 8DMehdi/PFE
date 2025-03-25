@@ -19,6 +19,7 @@ public class AnimationController : MonoBehaviour
     const string PLAYER_FALL = "FALL";
     const string PLAYER_GRAP = "GRAP";
     const string PLAYER_GRAP2 = "GRAP2";
+    const string PLAYER_VOL = "VOL";
     float _xAxis;
 
     private Vector3 lastPosition; // Store the last frame position
@@ -50,15 +51,15 @@ public class AnimationController : MonoBehaviour
             transform.eulerAngles = new Vector3(0, 180, 0);
         }
 
-        
-        else
-        {
-            
 
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            VOL();
         }
 
         // Update last position for the next frame
         lastPosition = transform.position;
+
     }
 
     void ChangeAnimationState(string newAnimation)
@@ -161,5 +162,9 @@ public class AnimationController : MonoBehaviour
         {
             ChangeAnimationState(PLAYER_GRAP2);
         }
+    }
+    public void VOL()
+    {
+        ChangeAnimationState(PLAYER_VOL);
     }
 }
