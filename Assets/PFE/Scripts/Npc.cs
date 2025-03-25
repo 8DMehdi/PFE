@@ -1,6 +1,16 @@
 using UnityEngine;
 
-public class NPC : Interactable // Le NPC hérite maintenant d'Interactable
+public class NPC : Interactable
 {
-    public bool isLastNPC; // C'est la variable qui indique si c'est le dernier NPC
+    public bool isLastNPC;
+    private Animator animator;
+
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+        if (animator != null)
+        {
+            animator.Play("Idle"); 
+        }
+    }
 }
