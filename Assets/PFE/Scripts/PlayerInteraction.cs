@@ -102,7 +102,7 @@ private void OnTriggerEnter2D(Collider2D other)
         if (npc != null && npc.isLastNPC) 
         {
             PlayerController playerController = FindObjectOfType<PlayerController>();
-            playerController.hasTalkedToLastNPC = true;
+            // playerController.hasTalkedToLastNPC = true;
             Debug.Log("Dernier NPC trouvé ! Le vol est maintenant déblocable.");
         }
     }
