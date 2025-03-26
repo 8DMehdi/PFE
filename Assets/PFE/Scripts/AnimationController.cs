@@ -168,6 +168,89 @@ public class AnimationController : MonoBehaviour
             evolution = 3;
             Debug.Log("Variable chang�e � 1");
         }
+<<<<<<< HEAD
+=======
+    }
+
+    public void Jump()
+    {
+        
+        if (evolution == 1)
+        {
+            ChangeAnimationState(PLAYER_JUMP1);
+        }
+        if (evolution == 2)
+        {
+            ChangeAnimationState(PLAYER_JUMP2);
+        }
+        if (evolution == 3)
+        {
+            ChangeAnimationState(PLAYER_JUMP3);
+        }
+    }
+    public void RUN()
+    {
+        if (_xAxis != 0)
+        {
+            if (evolution == 1)
+            {
+                ChangeAnimationState(PLAYER_RUN);
+            }
+            if (evolution == 2)
+            {
+                ChangeAnimationState(PLAYER_RUN2);
+            }
+            if (evolution == 3)
+            {
+                ChangeAnimationState(PLAYER_RUN3);
+            }
+
+        }
+        else 
+        {
+            if (evolution == 1)
+            {
+                ChangeAnimationState(PLAYER_IDLE);
+            }
+            if (evolution == 2)
+            {
+                ChangeAnimationState(PLAYER_IDLE2);
+            }
+            if (evolution == 3)
+            {
+                ChangeAnimationState(PLAYER_IDLE3);
+            }
+        }
+    }
+
+    public void Idle()
+    {
+        if (evolution == 1)
+        {
+            //ChangeAnimationState(PLAYER_IDLE);
+        }
+        if (evolution == 2)
+        {
+            //ChangeAnimationState(PLAYER_IDLE2);
+        }
+    }
+
+    public void Fall()
+    {
+        //ChangeAnimationState(PLAYER_FALL);
+        //animator.Play("FALL");
+    }
+    public void Grab()
+    {
+        if (evolution == 2)
+        {
+            ChangeAnimationState(PLAYER_GRAP);
+        }
+        if (evolution == 3)
+        {
+            ChangeAnimationState(PLAYER_GRAP2);
+        }
+>>>>>>> b7131a863a04bce205c9bd8cfbae234d94231242
     }
 
     public void Jump()

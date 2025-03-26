@@ -15,26 +15,6 @@ public class PlayerInteraction : MonoBehaviour
         playerController = GetComponent<PlayerController>();
     }
 
-    // private void Update()
-    // {
-    //     if (isPlayerNearby && Input.GetKeyDown(KeyCode.E))
-    //     {
-    //         if (DialogueManager.Instance.dialoguePanel.activeSelf)
-    //         {
-    //             DialogueManager.Instance.DisplayNextSentence(); 
-    //         }
-    //         else
-    //         {
-    //             if (currentNPC != null)
-    //             {
-    //                 DialogueManager.Instance.StartDialogue(currentNPC.dialogue); 
-    //                 UnlockFlyingAbility(); // Débloque le vol après le dialogue
-    //             }
-    //         }
-    //     }
-    // }
-
-
     private void Update()
 {
     if (isPlayerNearby && Input.GetKeyDown(KeyCode.E))
@@ -70,24 +50,6 @@ public class PlayerInteraction : MonoBehaviour
         }
     }
 
-
-// private void OnTriggerEnter2D(Collider2D other)
-// {
-//     Interactable interactable = other.GetComponent<Interactable>();
-//     if (interactable != null)
-//     {
-//         isPlayerNearby = true;
-//         currentNPC = interactable;
-
-//         // Si c'est le dernier NPC, marque que le joueur peut maintenant activer le vol
-//         if (currentNPC.isLastNPC) // Assure-toi que ce champ existe dans ton NPC
-//         {
-//             PlayerController playerController = FindObjectOfType<PlayerController>();
-//             playerController.hasTalkedToLastNPC = true; // Déclenche que le joueur a parlé au dernier NPC
-//         }
-//     }
-// }
-
 private void OnTriggerEnter2D(Collider2D other)
 {
     Interactable interactable = other.GetComponent<Interactable>();
@@ -118,22 +80,3 @@ private void OnTriggerExit2D(Collider2D other)
     }
 }
 }
-
-    // private void OnTriggerEnter2D(Collider2D other)
-    // {
-    //     Interactable interactable = other.GetComponent<Interactable>();
-    //     if (interactable != null)
-    //     {
-    //         isPlayerNearby = true;
-    //         currentNPC = interactable; 
-    //     }
-    // }
-
-    // private void OnTriggerExit2D(Collider2D other)
-    // {
-    //     if (other.GetComponent<Interactable>() != null)
-    //     {
-    //         isPlayerNearby = false;
-    //         currentNPC = null;
-    //     }
-    // }

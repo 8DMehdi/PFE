@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: NewDialogue3
   m_EditorClassIdentifier: 
   npcName: Silk
+  npcVoice: {fileID: 0}
+  npcVoiceClip: {fileID: 0}
   npcSentences:
   - "Es-tu vraiment s\xFBr(e) de toi ?"
   - "Je sais que c'est ta d\xE9cision et je suis tr\xE8s touch\xE9e de ton envie
@@ -28,7 +30,7 @@ MonoBehaviour:
   - '... '
   - "Tu as tellement grandis, je suis fi\xE8re de toi. "
   playerSentences:
-  - 
+  - cc
   - 
   - 
   - 
