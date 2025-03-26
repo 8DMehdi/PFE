@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PS_TEST
   m_EditorClassIdentifier: 
   brakeSpeed: 0.5
-  speed: 22
+  speed: 18
   airSpeed: 30
   grabSpeed: 35
   maxSpeedGrab: 25

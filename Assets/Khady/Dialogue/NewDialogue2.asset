@@ -15,20 +15,22 @@ MonoBehaviour:
   npcName: Atlas
   npcSentences:
   - Comme c'est curieux...
-  - 'Oh, pardonnez mon impertinence. '
+  - 'Oh, pardonnez mon impertinence. Il y a bien des lunes que je n''ai eu la compagnie
+    de jeunes pousses dans ma fabrique. '
   - "Fut un temps, nous \xE9tions nombreux \xE0 travailler ici, les plus grands faiseurs
     de soie."
   - "Mais depuis la perte de nos ailes, nombre de mes camarades ont perdu leur \xE9tincelle
     de vie..."
   - Et de travail...
-  - "Mais ce bon vieux Atlas que tu vois l\xE0 reste vaillant. "
-  - "Le jour de la chute de l'ancienne reine, je me suis enfuis avec des tr\xE9sors
-    du royaume."
-  - "Je d\xE9tiens un artefact puissant. "
-  - "Une perle sp\xE9ciale qui permet aux jeunes pousses comme toi d'\xE9voluer. "
+  - 'Mais ce bon vieux Atlas reste vaillant. '
+  - "Il se trouve que le jour de la chute de l'ancienne reine, je me suis enfuis
+    avec des tr\xE9sors du royaume."
+  - "L'artefact se trouvant ici est une Perle de Ros\xE9volution.  "
+  - "Ces  perles sp\xE9ciales permettent aux jeunes pousses comme toi d'\xE9voluer
+    en vieilles branches comme moi. "
   - "J'ai  gard\xE9 le secret de cette perle en attendant l'arriv\xE9e d'une chenille
-    vigoureuse. "
-  - "Je te la donne. Prend cette perle. Je te souhaite bonne chance dans ton p\xE9riple. "
+    vigoureuse avec le potentiel d'\xE9voluer. "
+  - "Aujourd'hui elle est \xE0 toi. Je te souhaite bonne chance dans ton p\xE9riple. "
   playerSentences:
   - 
   - 

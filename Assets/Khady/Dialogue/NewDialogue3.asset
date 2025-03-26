@@ -16,12 +16,12 @@ MonoBehaviour:
   npcSentences:
   - "Es-tu vraiment s\xFBr(e) de toi ?"
   - "Je sais que c'est ta d\xE9cision et je suis tr\xE8s touch\xE9e de ton envie
-    de reprendre lle tr\xF4ne..."
+    de reprendre le tr\xF4ne..."
   - "... mais la route jusqu'au chateau est longue et p\xE9rilleuse... "
-  - 'Luna, la tyranique est aux aguets. '
-  - "Depuis notre fuite, elle a ordonn\xE9 \xE0 sa garde rapproch\xE9e de d\xE9chirer
+  - 'Luna, le tyran est aux aguets. '
+  - "Depuis notre fuite, il a ordonn\xE9 \xE0 sa garde rapproch\xE9e de d\xE9chirer
     les ailes de tous les habitants..."
-  - "... de peur d'\xEAtre d\xE9tr\xF4n\xE9e \xE0 son tour."
+  - "... de peur d'\xEAtre d\xE9tr\xF4n\xE9 \xE0 son tour."
   - 'Rien de ce que je dis ne te fera changer d''avis n''est-ce pas ? '
   - "Tu as ma b\xE9n\xE9diction, mais fait attention. "
   - 'Un ami, Atlas, pourra t''aider, il dirigeait autrefois la fabrique de fil. '
