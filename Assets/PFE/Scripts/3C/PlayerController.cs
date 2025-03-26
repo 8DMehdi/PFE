@@ -25,13 +25,10 @@ public class PlayerController : MonoBehaviour
     private int evolution = 1;
     private bool atterisage = false;
 
-<<<<<<< HEAD
     public bool hasTalkedToLastNPC = false;
 
     public bool hasKey = false;
 
-=======
->>>>>>> b7131a863a04bce205c9bd8cfbae234d94231242
     public Animator animator;
 
     public AnimationController animationController;
@@ -91,11 +88,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float levitationForce = 5f; // Force de lévitation
     [SerializeField] private float gravity = 5f; // Gravité appliquée pendant le vol
     private bool _canFly = false; // Capacité de voler activée/désactivée
-<<<<<<< HEAD
-
-=======
-     public bool hasTalkedToLastNPC = false;
->>>>>>> b7131a863a04bce205c9bd8cfbae234d94231242
     private void Awake()
     {
         cam = Camera.main;
@@ -176,33 +168,10 @@ public class PlayerController : MonoBehaviour
         //IsFalling
         IsFalling = body.velocity.y < -1f;
 
-<<<<<<< HEAD
         //Check Touching Ground
         IsTouchingGround = Physics2D.Raycast(body.position + Vector2.down * (col.size.y / 2 + 0.1f), Vector2.down, .2f, ~LayerMask.GetMask("Grapping"));
         Debug.DrawRay(body.position + Vector2.down * (col.size.y / 2 + 0.1f), Vector2.down * .2f, IsTouchingGround ? Color.green : Color.red);
     }
-=======
-         // Check Touching Ground en ignorant les checkpoints
-    RaycastHit2D hit = Physics2D.Raycast(body.position + Vector2.down * (col.size.y / 2 + 0.1f), Vector2.down, .2f);
-
-    if (hit.collider != null && hit.collider.GetComponent<Checkpoint>() == null) 
-    {
-        IsTouchingGround = true;
-    }
-    else
-    {
-        IsTouchingGround = false;
-    }
-
-    // Debug pour voir où le raycast touche
-    Debug.DrawRay(body.position + Vector2.down * (col.size.y / 2 + 0.1f), Vector2.down * .2f, IsTouchingGround ? Color.green : Color.red);
-}
-
-    //     //Check Touching Ground
-    //     IsTouchingGround = Physics2D.Raycast(body.position + Vector2.down * (col.size.y / 2 + 0.1f), Vector2.down, .2f, ~LayerMask.GetMask("Grapping"));
-    //     Debug.DrawRay(body.position + Vector2.down * (col.size.y / 2 + 0.1f), Vector2.down * .2f, IsTouchingGround ? Color.green : Color.red);
-    // }
->>>>>>> b7131a863a04bce205c9bd8cfbae234d94231242
 
     private void OnPlayerStateChange(PlayerState oldState, PlayerState newState)
     {
@@ -318,45 +287,15 @@ public class PlayerController : MonoBehaviour
         }
         else if (_canDoubleJump)
         {
-<<<<<<< HEAD
             body.gravityScale = 3;
             Jump(Stats.jumpForce * 0.8f);
             _canDoubleJump = false;
-=======
-
-            body.gravityScale = 1f; // Diminue temporairement la gravité
-             body.velocity = new Vector2(body.velocity.x, 0); 
-             Jump(Stats.jumpForce);
-             _canDoubleJump = false;
-             StartCoroutine(ResetGravity());
-            // body.gravityScale = 3;
-            // Jump(Stats.jumpForce * 0.8f);
-            // _canDoubleJump = false;
->>>>>>> b7131a863a04bce205c9bd8cfbae234d94231242
             
         }
     
 
     }
-<<<<<<< HEAD
     private void Jump(float force)
-=======
-    // private void Jump(float force)
-    // {
-    //     State = PlayerState.Jumping;
-    //     UpdateAnimation();
-    //     body.AddForce(Vector2.up * Stats.jumpForce, ForceMode2D.Impulse);
-    //     body.gravityScale = 3;
-
-    // }
-     private IEnumerator ResetGravity()
-{
-    yield return new WaitForSeconds(0.2f);
-    body.gravityScale = Stats.fallGravityScale;
-}
-
- private void Jump(float force)
->>>>>>> b7131a863a04bce205c9bd8cfbae234d94231242
     {
         State = PlayerState.Jumping;
         UpdateAnimation();

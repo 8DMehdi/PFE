@@ -5,9 +5,9 @@ using UnityEngine;
 public class DialogueData : ScriptableObject
 {
     public string npcName;
-    public AudioClip npcVoice;
+    // public AudioClip npcVoice;
 
-    public AudioClip npcVoiceClip; // Son spécifique au PNJ
+    // public AudioClip npcVoiceClip; // Son spécifique au PNJ
 
     [TextArea(3, 5)]
     public List<string> npcSentences;
