@@ -26,10 +26,15 @@ public class MenuButton : MonoBehaviour
                 if (thisIndex == 1)
                 {
                     Debug.Log("Ca marche 2");
+                    SceneManager.LoadScene("Credits");
                 }
                 if (thisIndex == 2)
                 {
                     Debug.Log("Ca marche 3");
+                }
+                if (thisIndex == 4)
+                {
+                    SceneManager.LoadScene("Menue");
                 }
             }
             else if (animator.GetBool ("pressed")){
