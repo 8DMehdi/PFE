@@ -5506,7 +5506,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 38.399998, y: 76.799995}
+    oldSize: {x: 38.4, y: 76.8}
     newSize: {x: 38.399998, y: 76.799995}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -7821,7 +7821,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 38.399998, y: 76.799995}
+    oldSize: {x: 38.4, y: 76.8}
     newSize: {x: 38.399998, y: 76.799995}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -8422,7 +8422,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 38.399998, y: 76.799995}
+    oldSize: {x: 38.4, y: 76.8}
     newSize: {x: 38.399998, y: 76.799995}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -28058,11 +28058,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3502441213320571029, guid: ae1a1282f1cffc34a8e51725db132e76, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 337.47
+      value: 159.8
       objectReference: {fileID: 0}
     - target: {fileID: 3502441213320571029, guid: ae1a1282f1cffc34a8e51725db132e76, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 135.87
+      value: 122.5
       objectReference: {fileID: 0}
     - target: {fileID: 3502441213320571029, guid: ae1a1282f1cffc34a8e51725db132e76, type: 3}
       propertyPath: m_LocalPosition.z
@@ -80196,7 +80196,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 38.399998, y: 76.799995}
+    oldSize: {x: 38.4, y: 76.8}
     newSize: {x: 38.399998, y: 76.799995}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -194891,7 +194891,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 38.399998, y: 76.799995}
+    oldSize: {x: 38.4, y: 76.8}
     newSize: {x: 38.399998, y: 76.799995}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -260615,7 +260615,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 38.399998, y: 76.799995}
+    oldSize: {x: 38.4, y: 76.8}
     newSize: {x: 38.399998, y: 76.799995}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -323648,7 +323648,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 38.399998, y: 76.799995}
+    oldSize: {x: 38.4, y: 76.8}
     newSize: {x: 38.399998, y: 76.799995}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -335563,7 +335563,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 38.399998, y: 76.799995}
+    oldSize: {x: 38.4, y: 76.8}
     newSize: {x: 38.399998, y: 76.799995}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -416056,10 +416056,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Collectible
-
-
-'
+  m_text: Khady
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

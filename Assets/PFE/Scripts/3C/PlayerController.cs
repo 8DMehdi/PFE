@@ -320,11 +320,7 @@ public class PlayerController : MonoBehaviour
         State = PlayerState.Moving;
         _canDoubleJump = false;
     }
-        // {
-        //     //Atterrissage
-        //     State = PlayerState.Moving;
-        //     _canDoubleJump = false;
-        // }
+        
         else
         {
             if (State != PlayerState.Jumping) State = PlayerState.Falling;
@@ -370,45 +366,6 @@ public class PlayerController : MonoBehaviour
 
         State = PlayerState.Falling;
     }
-
-// private void HandleFlying()
-// {
-//     float moveHorizontal = Input.GetAxis("Horizontal");
-
-//     // Appliquer une vitesse horizontale seulement si une touche est pressée
-//     if (Mathf.Abs(moveHorizontal) > 0.1f)
-//     {
-//         body.velocity = new Vector2(moveHorizontal * flySpeed, body.velocity.y);
-//     }
-
-//     // Limiter la vitesse verticale
-//     if (Mathf.Abs(body.velocity.y) > Stats.MaxVerticalSpeed)
-//     {
-//         body.velocity = new Vector2(body.velocity.x, Mathf.Sign(body.velocity.y) * Stats.MaxVerticalSpeed);
-//     }
-
-//     // Appliquer une force de lévitation douce
-//     if (Mathf.Abs(moveHorizontal) > 0.5f)
-//     {
-//         body.velocity = new Vector2(body.velocity.x, Mathf.Lerp(body.velocity.y, levitationForce, 0.5f));
-//     }
-//     else
-//     {
-//         // Appliquer une descente en douceur lorsqu'aucune touche n'est pressée
-//         body.velocity = new Vector2(body.velocity.x, Mathf.Lerp(body.velocity.y, -levitationForce, 0.5f));
-//     }
-
-//     // Appliquer la gravité manuellement
-//     body.AddForce(Vector2.down * gravity * Time.deltaTime); // Ajustez la gravité ici si nécessaire
-
-//     // Ajouter un léger mouvement latéral lors de la descente uniquement si une touche est enfoncée
-//     if (Mathf.Abs(moveHorizontal) > 0.1f)
-//     {
-//         body.velocity += new Vector2(moveHorizontal * 10f, 0);
-//     }
-
-//     SoundManager.Instance.PlayFlySound();
-// }
 
 private void HandleFlying()
 {
