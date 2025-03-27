@@ -167,4 +167,8 @@ public class AnimationController : MonoBehaviour
     {
         ChangeAnimationState(PLAYER_VOL);
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 90c7b9640281cbed5e82d0c527182912a63702c9
