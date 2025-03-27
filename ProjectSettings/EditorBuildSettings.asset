@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Justine/Cinematique END.unity
     guid: 97afee6beeea9a94a9eeca752c50bf5f
+  - enabled: 1
+    path: Assets/Mehdi/Menu/Scenes/Credits.unity
+    guid: f99ffaba40d3a1644b18d131bc80983c
   m_configObjects: {}
