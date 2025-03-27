@@ -11,6 +11,8 @@ public class KeyCollectible : MonoBehaviour
         {
             player.hasKey = true; // Donne la clé au joueur
             Destroy(gameObject);  // Détruit la clé après l'avoir ramassée
+                        SoundManager.Instance.PlayKeySound();
+
         }
     }
 }

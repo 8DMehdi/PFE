@@ -35,7 +35,7 @@ public class CollectibleManager : MonoBehaviour
     {
         if (collectibleText != null)
         {
-            collectibleText.text = "Collectibles: " + collectibleCount;
+            collectibleText.text = "Fragments de souvenirs: " + collectibleCount;
         }
     }
 }
