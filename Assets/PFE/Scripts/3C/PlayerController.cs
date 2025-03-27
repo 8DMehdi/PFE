@@ -844,6 +844,7 @@ public class PlayerController : MonoBehaviour
         UpdateAnimation();
         body.AddForce(Vector2.up * Stats.jumpForce, ForceMode2D.Impulse);
         body.gravityScale = 3;
+        SoundManager.Instance.PlayJumpSound();
 
 
     }
