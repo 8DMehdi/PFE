@@ -74,13 +74,11 @@ public class PlayerController : MonoBehaviour
     public SpringJoint2D distanceJoint;
 
     public bool hasKey = false;
-
-
     [SerializeField] private float flySpeed = 5f; // Vitesse de vol
     [SerializeField] private float levitationForce = 5f; // Force de lévitation
     [SerializeField] private float gravity = 5f; // Gravité appliquée pendant le vol
     private bool _canFly = false; // Capacité de voler activée/désactivée
-
+    public bool hasTalkedToLastNPC = false;
     private void Awake()
     {
         cam = Camera.main;
@@ -101,56 +99,67 @@ public class PlayerController : MonoBehaviour
         lineRenderer.enabled = false;
     }
 
-    private void Update()
-    {
-        lineRenderer.SetPosition(1, transform.position);
-        
-        if (_canFly)
-        {
-            HandleFlying(); // Gérer le vol si activé
-        }
 
-        // Vérifier si la touche "P" est enfoncée pour activer ou désactiver le vol
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            if (_canFly)
-            {
-                DisableFly(); // Désactiver la capacité de voler
-            }
-            else
-            {
-                EnableFly(); // Activer la capacité de voler
-            }
-        }
+private void Update()
+{
+    if (_canFly)
+    {
+        HandleFlying(); // Gérer le vol si activé
     }
 
-    private void FixedUpdate()
+    // Vérifier si la touche "P" est enfoncée pour activer ou désactiver le vol
+    if (hasTalkedToLastNPC && Input.GetKeyDown(KeyCode.P))
     {
-        if (State == PlayerState.Interacting) return;
-
-        //Clamp Speed
-        if (State == PlayerState.Grabbing)
+        if (_canFly)
         {
-            if(body.velocity.magnitude > Stats.maxSpeedGrab)
-            {
-                body.velocity = body.velocity.normalized * Stats.maxSpeedGrab;
-            }
+            DisableFly(); // Désactiver la capacité de voler
         }
         else
         {
-            Vector2 velocity = body.velocity;
-            velocity.x = Mathf.Clamp(velocity.x, -Stats.maxSpeedHorizontal, Stats.maxSpeedHorizontal);
-            velocity.y = Mathf.Clamp(velocity.y, -Stats.maxSpeedVertical, Stats.maxSpeedVertical);
-            body.velocity = velocity;
+            EnableFly(); // Activer la capacité de voler
         }
-
-        //IsFalling
-        IsFalling = body.velocity.y < -1f;
-
-        //Check Touching Ground
-        IsTouchingGround = Physics2D.Raycast(body.position + Vector2.down * (col.size.y / 2 + 0.1f), Vector2.down, .2f);
-        Debug.DrawRay(body.position + Vector2.down * (col.size.y / 2 + 0.1f), Vector2.down * .2f, IsTouchingGround ? Color.green : Color.red);
     }
+}
+
+private void FixedUpdate()
+{
+    if (State == PlayerState.Interacting) return;
+
+    // Clamp Speed
+    if (State == PlayerState.Grabbing)
+    {
+        if (body.velocity.magnitude > Stats.maxSpeedGrab)
+        {
+            body.velocity = body.velocity.normalized * Stats.maxSpeedGrab;
+        }
+    }
+    else
+    {
+        Vector2 velocity = body.velocity;
+        velocity.x = Mathf.Clamp(velocity.x, -Stats.maxSpeedHorizontal, Stats.maxSpeedHorizontal);
+        velocity.y = Mathf.Clamp(velocity.y, -Stats.maxSpeedVertical, Stats.maxSpeedVertical);
+        body.velocity = velocity;
+    }
+
+    // IsFalling
+    IsFalling = body.velocity.y < -1f;
+
+    // Check Touching Ground en ignorant les checkpoints
+    RaycastHit2D hit = Physics2D.Raycast(body.position + Vector2.down * (col.size.y / 2 + 0.1f), Vector2.down, .2f);
+
+    if (hit.collider != null && hit.collider.GetComponent<Checkpoint>() == null) 
+    {
+        IsTouchingGround = true;
+    }
+    else
+    {
+        IsTouchingGround = false;
+    }
+
+    // Debug pour voir où le raycast touche
+    Debug.DrawRay(body.position + Vector2.down * (col.size.y / 2 + 0.1f), Vector2.down * .2f, IsTouchingGround ? Color.green : Color.red);
+}
+
 
     private void OnPlayerStateChange(PlayerState oldState, PlayerState newState)
     {
@@ -255,12 +264,20 @@ public class PlayerController : MonoBehaviour
         }
         else if (_canDoubleJump)
         {
-            Jump(Stats.jumpForce * 0.8f);
-            _canDoubleJump = false;
+             body.gravityScale = 1f; // Diminue temporairement la gravité
+             body.velocity = new Vector2(body.velocity.x, 0); 
+             Jump(Stats.jumpForce);
+             _canDoubleJump = false;
+             StartCoroutine(ResetGravity());
         }
-    
 
     }
+
+    private IEnumerator ResetGravity()
+{
+    yield return new WaitForSeconds(0.2f);
+    body.gravityScale = Stats.fallGravityScale;
+}
     private void Jump(float force)
     {
         State = PlayerState.Jumping;

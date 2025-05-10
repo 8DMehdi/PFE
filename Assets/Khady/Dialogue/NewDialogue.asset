@@ -12,9 +12,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3e3bd9891417e64b837dca7e65401ef, type: 3}
   m_Name: NewDialogue
   m_EditorClassIdentifier: 
-  npcName: NPC-1
+  npcName: Hawk
   npcSentences:
-  - Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+  - "Qui va l\xE0 ?"
+  - "Oh d\xE9sol\xE9, je ne voulais pas t'effrayer, mais les habitudes ont la vie
+    dure. "
+  - 'Tu n''as pas l''air de faire partie de la garde de la reine, qui es-tu ? '
+  - "Tu n'es pas bien bavard, hein ? Ce n'est pas grave, je pense avoir une id\xE9e
+    de la raison de ta venue. "
+  - "La salle du tr\xF4ne se trouve au bout de cette prison. Mais tu ne pourras jamais
+    l'atteindre tel que tu es. "
+  - Tiens, prends cette Perle.
+  - "Je pense que nous avons un int\xE9r\xEAt commun \xE0 nous d\xE9barasser de la
+    reine tyrannique."
+  - "Je faisais partie de sa garde rapproch\xE9e mais je n'ai plus pu ignorer sa
+    violence et les injustices v\xE9cues par les habitants."
+  - "J'ai vol\xE9 cette perle et l'ai cach\xE9e sur moi. "
+  - "La reine ne l'a pas trouv\xE9 mais m'a fait enfermer dans l'espoir que je r\xE9v\xE8le
+    o\xF9 elle se trouve. "
+  - "Elle est \xE0 toi maintenant, prends la et donne une bonne le\xE7on \xE0 la
+    reine !"
   playerSentences:
-  - "Contrairement \xE0 une opinion r\xE9pandue, le Lorem Ipsum n'est pas simplement
-    du texte al\xE9atoire."
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
